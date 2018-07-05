@@ -10,7 +10,14 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-        
+        <!-- Boostrap-->
+        <link rel="stylesheet" href="{{ URL::to('/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ URL::to('//css/customs.css') }}">
+
+        <script src="{{ URL::to('/js/jquery.js') }}"></script>
+
+        <script src="{{ URL::to('/js/bootstrap.min.js') }}"></script>
+
         <!-- Styles -->
         <style>
             html, body {
