@@ -1,15 +1,15 @@
 <nav class="navbar navbar-default navbar-static-top head-style">
     <div class="container">
         <div class="navbar-header">
-            <a href="#">OnlineSmart</a>
+            <a href="#" class="navbar-brand heading-style">OnlineSmart</a>
         </div>
         <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav navbar-toggler-right">
-                <li><a href="#">Change Company</a></li>
-                <li><a href="#">Depart . & Periods</a></li>
-                <li><a href="#">Budgets</a></li>
-                <li><a href="#">Expense Request</a></li>
-                <li><a href="#">Users</a></li>
+                <li><a  class="heading-style" href="#">Change Company</a></li>
+                <li><a class="heading-style" href="#">Depart . & Periods</a></li>
+                <li><a class="heading-style" href="#">Budgets</a></li>
+                <li><a class="heading-style"href="#">Expense Request</a></li>
+                <li><a class="heading-style" href="#">Users</a></li>
 
                 <li>
                     <form class="navbar-form navbar-left" action="" method="#" role="search">
@@ -28,7 +28,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle dropdown dropdown-border" data-toggle="dropdown" role="button">
-                        <i class="fa fa-cogs"></i>
+                        <i class="fa fa-cogs heading-style"></i>
                         <span class="heading-style caret"></span>
                     </a>
 

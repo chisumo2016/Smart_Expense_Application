@@ -1,0 +1,18 @@
+.head-style{
+    background:#272b2f !important;
+}
+
+.heading-style{
+    color: white !important;
+}
+
+.heading-style:hover{
+    color: red !important;
+}
+.dropdown:focus{
+    background-color: #272b2f !important;
+}
+
+.dropdown-border{
+    border: 0 !important;
+}
