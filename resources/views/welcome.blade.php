@@ -12,7 +12,7 @@
 
         <!-- Boostrap-->
         <link rel="stylesheet" href="{{ URL::to('/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ URL::to('//css/customs.css') }}">
+        <link rel="stylesheet" href="{{ URL::to('/css/customs.css') }}">
 
         <script src="{{ URL::to('/js/jquery.js') }}"></script>
 

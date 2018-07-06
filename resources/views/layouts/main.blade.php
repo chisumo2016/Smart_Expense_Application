@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 @include('partials._head')
@@ -14,6 +15,8 @@
 
             @include("partials._footer")
         </div> <!-- End of Container-->
-    @yield('script')
+    @yield('partials._script')
+
+
 </body>
 </html>
