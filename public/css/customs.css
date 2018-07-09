@@ -16,3 +16,22 @@
 .dropdown-border{
     border: 0 !important;
 }
+
+/*Footer*/
+.footer{
+    background-color: #08090a;
+    margin-top:40px;
+    vertical-align:middle;
+}
+
+.footer P{
+    color: #ffffff;
+    padding:5px 15px;
+    text-align: center;
+    font-style: italic;
+    font-size: 11px;
+}
+
+.footer p > span{
+    color: #f27826;
+}

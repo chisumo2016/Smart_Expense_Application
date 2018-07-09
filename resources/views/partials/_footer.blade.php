@@ -1,4 +1,4 @@
-<div class="container-fluid" align="center">
+
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-10 col-offset-1">
@@ -10,4 +10,3 @@
             </div>
         </div>
     </div>
-</div>
