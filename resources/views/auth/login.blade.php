@@ -1,6 +1,6 @@
 @extends('layouts.authApp')
 
-@section('content')
+@section('authcontent')
 
 <div class="col-sm-4"></div>
 
@@ -52,7 +52,7 @@
 
                 <div class="form-group ">
                     <div class="col-sm-12 ">
-                        <input type="submit"  value="Log In" class="btn btn-danger">
+                        <input type="submit"  value="Log In" class="btn btn-danger btn-block">
                            Login
 
                     </div>
