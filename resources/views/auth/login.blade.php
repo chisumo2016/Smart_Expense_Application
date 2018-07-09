@@ -9,7 +9,7 @@
             <form class="form-horizontal register-container tb-padding" role="form" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
              {{ csrf_field() }}
                 <div class="form-group">
-                    <div class="col-sm012">
+                    <div class="col-sm-12">
                         <h3 class="text-center">Login to <span class="text-color">Smart Expense Keeping</span></h3>
                     </div>
                 </div>
