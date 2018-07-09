@@ -48,4 +48,20 @@
     margin:0 auto;
     padding: 30px;
 }
+.no-padding{
+    padding:0;
+}
+.margin-style{
+    margin-top:2px;
+}
+
+.text-color{
+    color: #01c3ff;
+}
+
+a.forgot-link{
+    color: #51595e;
+    text-decoration: none;
+}
+a.forgot-link:hover{color: #01c3ff;}
 /*End Login and Register  pages*/

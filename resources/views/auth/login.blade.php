@@ -53,8 +53,6 @@
                 <div class="form-group ">
                     <div class="col-sm-12 ">
                         <input type="submit"  value="Log In" class="btn btn-danger btn-block">
-                           Login
-
                     </div>
                 </div>
 
