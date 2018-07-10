@@ -181,13 +181,20 @@
 
 @section('script')
     <script>
-       function get_zones(id) {
+
+       function get_zones(id)
+       {
+           //alert('success');
            $('#loader').show();
 
-           $.post("auth/get_zones",{id:id, _token:"{{ csrf_token() }}"}).done(function(e)){
+           $.post("auth/get_zones",{id:id, _token:"{{ csrf_token() }}"}).done(function(e){
                $("#state").html(e);
                $('#loader').hide();
-           }
+           });
        }
     </script>
 @endsection
+
+{{--$(document).ready(function () {--}}
+{{--alert('success');--}}
+{{--});--}}
