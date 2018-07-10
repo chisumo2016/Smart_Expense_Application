@@ -70,9 +70,16 @@
                         <label for="country" class="col-form-label col-sm-2">Country</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="country" id="country">
-                                <option value="#">Tanzania</option>
-                                <option value="#">Uganda</option>
-                                <option value="#">Unitede Kingdom</option>
+                                <option value="#">Choose Country</option>
+                                <?php
+                                $countries = DB::select(DB::raw('select * from countries')) ;
+                                 ?>
+                                @if(count($countries) > 0 )
+                                    @foreach($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                @endif
+
                             </select>
 
                             @if ($errors->has('country'))
