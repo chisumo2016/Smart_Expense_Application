@@ -8,7 +8,8 @@
 
 
     <form class="form-horizontal register-container tb-padding" method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
-    {{ csrf_field() }}
+
+        {{ csrf_field() }}
 
         <input type="hidden" name="token" value="{{ $token }}">
 

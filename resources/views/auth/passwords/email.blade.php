@@ -13,7 +13,7 @@
             @endif
 
             <form class="form-horizontal register-container tb-padding" method="POST" role="form" action="{{ route('password.email') }}">
-             {{csrf_field()}}
+                {{ csrf_field() }}
 
                 <div class="form-group ">
                     <div class="col-sm-12 ">
@@ -22,9 +22,9 @@
                 </div>
 
                 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                    <label for="email" class="col-sm-4 col-form-label ">E-Mail Address</label>
+                    <label for="email" class="col-sm-3 col-form-label ">E-Mail Address</label>
 
-                    <div class="col-sm-8">
+                    <div class="col-sm-9">
                         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                         @if ($errors->has('email'))
