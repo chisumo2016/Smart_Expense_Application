@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="form-group ">
+                <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                     <label for="email" class="col-sm-4 col-form-label ">E-Mail Address</label>
 
                     <div class="col-sm-8">
