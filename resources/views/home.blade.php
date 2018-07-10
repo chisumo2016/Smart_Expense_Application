@@ -1,23 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="row ">
+    <div class="col-sm-10 col-sm-offset-1">
+         <div class="col-sm-10 col-sm-offset-1">
+             <h2 class="col-sm-10 col-sm-offset-1" style="color: #e97856">Smart Expense <span class="text-color">Keeping</span></h2>
+         </div>
 
-                    You are logged in!
-                </div>
-            </div>
+        <div class="col-sm-10 col-sm-offset-1" style="margin-top: 20px;">
+            <h1>Dashboard</h1>
         </div>
     </div>
 </div>
+
 @endsection

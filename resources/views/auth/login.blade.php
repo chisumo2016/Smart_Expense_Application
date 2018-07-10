@@ -14,7 +14,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                     {{--<label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>--}}
 
                     <div class="col-sm-12">
@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <div class="form-group ">
+                <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                     {{--<label for="password" class="col-sm-4 col-form-label text-md-right">Password</label>--}}
 
                     <div class="col-sm-12">

@@ -161,19 +161,19 @@
                         </div>
                     </div>
 
-                    <div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
-                        <label for="logo" class="col-sm-2 form-control-label">Logo</label>
+                    {{--<div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">--}}
+                        {{--<label for="logo" class="col-sm-2 form-control-label">Logo</label>--}}
 
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control" name="logo" id="logo" value="{{ old('logo') }}">
+                        {{--<div class="col-sm-10">--}}
+                            {{--<input type="file" class="form-control" name="logo" id="logo" value="{{ old('logo') }}">--}}
 
-                            @if ($errors->has('logo'))
-                                <span class="help-block" >
-                                    <strong>{{ $errors->first('logo') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
+                            {{--@if ($errors->has('logo'))--}}
+                                {{--<span class="help-block" >--}}
+                                    {{--<strong>{{ $errors->first('logo') }}</strong>--}}
+                                {{--</span>--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
                     <div class="form-group mb-0">
                         <div class="col-sm-10 col-sm-offset-1">
