@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('logo');
             $table->enum('status', ['off', 'on'])->default('off');
             $table->integer('company_id')->unsigned()->nullable();
-            $table->string('company_name')->unsigned()->nullable();
+            $table->string('company_name');
             $table->integer('role')->unsigned()->default(1);
             $table->text('access')->nullable();
 
