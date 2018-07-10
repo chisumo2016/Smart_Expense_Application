@@ -92,7 +92,8 @@ class RegisterController extends Controller
     public function  get_zones()
     {
         //Get data
-        $data['zones'] = $this->countryzone->zones();
-        dd($data['zones']);
+        $data['zones'] = $this->countryzone->zones();  //dd($data['zones']);
+        return view('auth.zones', $data);
+
     }
 }

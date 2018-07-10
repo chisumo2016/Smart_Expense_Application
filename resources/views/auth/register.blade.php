@@ -96,10 +96,8 @@
                         <div class="col-sm-10 ">
                             <select class="form-control" name="state" id="state">
 
-                                <option value="">Choose State 1</option>
-                                <option value="">Choose State  2</option>
-                                <option value="">Choose State  3</option>
-                                <option value="">Choose State  4</option>
+                                {{--<option value="">Choose State 1</option>--}}
+
                             </select>
 
                             <img src="{{ asset('images/spinner.gif') }}" id="loader" style="position: absolute; right:-9px; top:9px; display: none">
