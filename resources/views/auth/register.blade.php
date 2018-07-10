@@ -66,6 +66,20 @@
                         </div>
                     </div>
 
+                    <div class="form-group {{ $errors->has('phone') ? 'has-error' : '' }}">
+                        <label for="phone" class=" col-form-label col-sm-2">Phone</label>
+
+                        <div class="col-sm-10">
+                            <input id="phone" type="text" class="form-control" name="phone"  value="{{ old('phone') }}">
+
+                            @if ($errors->has('phone'))
+                                <span class="help-block" role="alert">
+                                    <strong>{{ $errors->first('phone') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="country" class="col-form-label col-sm-2">Country</label>
                         <div class="col-sm-10">

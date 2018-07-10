@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'city' => 'required',
             'country' => 'required',
             'postal_code' => 'required',
-            'logo' => 'required',
+            //'logo' => 'required',
         ]);
     }
 
@@ -72,7 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
+        //dd($data);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -85,7 +85,7 @@ class RegisterController extends Controller
             'city'           =>    $data['city'],
             'country'        =>    $data['country'],
             'postal_code'    =>    $data['postal_code'],
-            'logo'           =>    $data['logo'],
+            //'logo'           =>    $data['logo'],
         ]);
     }
 
