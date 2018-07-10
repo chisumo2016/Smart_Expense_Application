@@ -16,11 +16,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group ">
+                    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                         <label for="name" class="col-sm-2 col-form-label">Name:</label>
 
                         <div class="col-sm-10">
-                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" >
 
                             @if ($errors->has('name'))
                                 <span class="help-block">
@@ -30,11 +30,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                         <label for="email" class=" col-sm-2 col-form-label">'E-Mail Address</label>
 
                         <div class="col-sm-10">
-                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" >
 
                             @if ($errors->has('email'))
                                 <span class="help-block" role="alert">
@@ -44,11 +44,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group ">
+                    <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
                         <label for="password" class=" col-form-label col-sm-2">Password</label>
 
                         <div class="col-sm-10">
-                            <input id="password" type="password" class="form-control" name="password" required>
+                            <input id="password" type="password" class="form-control" name="password" >
 
                             @if ($errors->has('password'))
                                 <span class="help-block" role="alert">
@@ -58,11 +58,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group ">
+                    <div class="form-group {{ $errors->has('password_confirmatio') ? 'has-error' : '' }}">
                         <label for="password-confirm" class=" col-form-label col-sm-2">Confirm Password</label>
 
                         <div class="col-sm-10">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" >
                         </div>
                     </div>
 
@@ -108,11 +108,11 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('city') ? 'has-error' : '' }}">
                         <label for="city" class="col-sm-2 form-control-label">City</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="city" id="city" value="{{ old('city') }}" placeholder="City">
+                            <input type="text" class="form-control" name="city" id="city" value="{{ old('city') }}" placeholder="City" autofocus>
                             @if ($errors->has('city'))
                                 <span class="help-block" >
                                     <strong>{{ $errors->first('state') }}</strong>
@@ -121,11 +121,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('address') ? 'has-error' : '' }}">
                         <label for="address" class="col-sm-2 form-control-label">Address</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}" placeholder="Address">
+                            <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}" placeholder="Address" autofocus>
                             @if ($errors->has('address'))
                                 <span class="help-block" >
                                     <strong>{{ $errors->first('address') }}</strong>
@@ -134,11 +134,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('postal_code') ? 'has-error' : '' }}">
                         <label for="city" class="col-sm-2 form-control-label">Postal Code</label>
 
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="postal_code" id="postal_code" value="{{ old('postal_code') }}" placeholder="Postal Code">
+                            <input type="text" class="form-control" name="postal_code" id="postal_code" value="{{ old('postal_code') }}" placeholder="Postal Code" autofocus>
                             @if ($errors->has('postal_code'))
                                 <span class="help-block" >
                                     <strong>{{ $errors->first('postal_code') }}</strong>
@@ -147,7 +147,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
                         <label for="logo" class="col-sm-2 form-control-label">Logo</label>
 
                         <div class="col-sm-10">
