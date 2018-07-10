@@ -69,7 +69,7 @@
                     <div class="form-group">
                         <label for="country" class="col-form-label col-sm-2">Country</label>
                         <div class="col-sm-10">
-                            <select class="form-control" name="country" id="country">
+                            <select class="form-control" name="country" id="country" onchange="get_zones($(this).val())">
                                 <option value="#">Choose Country</option>
                                 <?php
                                 $countries = DB::select(DB::raw('select * from countries')) ;
@@ -102,7 +102,7 @@
                                 <option value="">Choose State  4</option>
                             </select>
 
-                            <img src="{{ asset('images/spinner.gif') }}" id="loader" style="position: absolute; right:-9px; top:9px;">
+                            <img src="{{ asset('images/spinner.gif') }}" id="loader" style="position: absolute; right:-9px; top:9px; display: none">
                             @if ($errors->has('state'))
                                 <span class="help-block" >
                                     <strong>{{ $errors->first('state') }}</strong>
@@ -177,4 +177,17 @@
         </div>
 </div> <!-- col-8-->
 
+@endsection
+
+@section('script')
+    <script>
+       function get_zones(id) {
+           $('#loader').show();
+
+           $.post("auth/get_zones",{id:id, _token:"{{ csrf_token() }}"}).done(function(e)){
+               $("#state").html(e);
+               $('#loader').hide();
+           }
+       }
+    </script>
 @endsection
