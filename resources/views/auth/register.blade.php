@@ -187,9 +187,12 @@
            //alert('success');
            $('#loader').show();
 
-           $.post("auth/get_zones",{id:id, _token:"{{ csrf_token() }}"}).done(function(e){
-               $("#state").html(e);
+           $.post("/auth/get_zones",{id:id,_token:"{{ csrf_token() }}"}).done(function(e){
+
+               $('#state').html(e);
                $('#loader').hide();
+
+
            });
        }
     </script>

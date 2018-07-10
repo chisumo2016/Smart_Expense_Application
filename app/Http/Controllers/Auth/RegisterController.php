@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\CountryZone;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -38,6 +39,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->countryzone = new CountryZone();
     }
 
     /**
@@ -85,5 +87,12 @@ class RegisterController extends Controller
             'postal_code'    =>    $data['postal_code'],
             'logo'           =>    $data['logo'],
         ]);
+    }
+
+    public function  get_zones()
+    {
+        //Get data
+        $data['zones'] = $this->countryzone->zones();
+        dd($data['zones']);
     }
 }

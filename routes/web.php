@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Auth get zone Route
+Route::post('/auth/get_zones', 'Auth\RegisterController@get_zones');
