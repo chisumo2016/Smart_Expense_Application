@@ -80,3 +80,7 @@ a.forgot-link:hover{color: #01c3ff;}
 .company-style{
     margin-top: 50px;
 }
+
+.error-style{
+    text-align: center;
+}
