@@ -79,8 +79,20 @@ class CompaniesController extends Controller
 
     public function active() //$companyid
     {
-        $companyid = Input::get('company');
-        $company_id = base64_decode(urlencode($companyid));
-        dd( $company_id);
+        $user_id = Auth::user()->id;
+        $company = Input::get('company');
+        $company_id = base64_decode(urldecode($company));
+        $company_name = $this->companies->find($company_id);
+        $users = $this->users->find($user_id);
+        $users->company_id = $company_id;
+        $users->company_name = $company_name->name;
+        $users->save();
+
+        return redirect()->route('company.index')->with('message','New Company' . $company_name->name .  'Selected');
+
+        //dd($users);
+
+
+        //dd($company_id);
     }
 }

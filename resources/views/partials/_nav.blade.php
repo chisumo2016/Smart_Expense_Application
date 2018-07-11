@@ -3,7 +3,16 @@
     <div class="container">
         <div class="row">
             <div class="navbar-header">
-                <a href="#" class="navbar-brand heading-style">OnlineSmart</a>
+                <a href="#" class="navbar-brand heading-style">
+
+                    @if(Auth::user()->company_id !=null )
+
+                        {{ Auth::user()->company_name }}
+
+                        @else
+                        {{ trans('app.companies-title') }} <i class="fa fa-btc"></i>
+                     @endif
+                </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
 
