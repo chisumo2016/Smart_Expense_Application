@@ -31,3 +31,14 @@ Route::post('/auth/get_zones', 'Auth\RegisterController@get_zones');
 
 //Logout
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+
+/**==================Company Routes================================*/
+
+Route::group(['prefix' => '/companies'], function (){
+
+    Route::get('/', 'CompaniesController@index')->name('Company.index');
+    Route::get('/create','CompaniesController@create')->name('Company.create');
+    Route::post('/store','CompaniesController@store')->name('Company.store');
+
+});
