@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class ExpensesController extends Controller
 {
+    //Constructor
+    public  function  __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     //
     public function index()
     {
