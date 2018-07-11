@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-8 title">
-                <h2>Add New Company</h2>
+                <h2>{{ $title }}</h2>
             </div>
             <div class="col-sm-4 company-style">
                 <a href="">

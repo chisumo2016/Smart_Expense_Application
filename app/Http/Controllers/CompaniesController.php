@@ -20,7 +20,8 @@ class CompaniesController extends Controller
 
     public  function create()
     {
-       return view('companies.create');
+        $data['title'] = trans('app.companies-create');
+       return view('companies.create', $data);
     }
 
     public  function  store()
