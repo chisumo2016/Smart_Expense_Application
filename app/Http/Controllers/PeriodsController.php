@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CompaniesController extends Controller
+class PeriodsController extends Controller
 {
     //
     public function index()
@@ -33,11 +33,6 @@ class CompaniesController extends Controller
     }
 
     public function  delete()
-    {
-
-    }
-
-    public function active()
     {
 
     }

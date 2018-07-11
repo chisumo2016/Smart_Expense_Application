@@ -21,6 +21,11 @@ class CategoriesController extends Controller
     {
 
     }
+    public function  edit()
+    {
+
+    }
+
 
     public function  update()
     {
