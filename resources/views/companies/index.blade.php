@@ -18,14 +18,21 @@
 
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
+            <?php $i = 0;  ?>
             @if(count($companies) > 0)
                 @foreach($companies as $company)
+                    {{--Accessing colors--}}
+                    <?php
+                       $class = (Auth::user()->company_id == $company->id ? "bg-{$colors[$i]}" : "border-{$colors[$i]}")  ;
+                    ?>
                     <a href="">
-                    <div class="departs-group">
+                    <div class="departs-group {{ $class }}">
                         <p>{{ $company->name }}</p>
                     </div>
 
                     </a>
+
+                    <?php if($i == count($colors)-1) {$i=-1;} $i++ ?>
                 @endforeach
             @endif
 
