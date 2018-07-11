@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCompanyRequest;
+use App\User;
 use Illuminate\Http\Request;
 use App\Company;
 use Illuminate\Support\Facades\Auth;
@@ -13,12 +14,20 @@ class CompaniesController extends Controller
     public  function  __construct()
     {
         $this->middleware('auth');
+        $this->companies = new Company;
+        $this->users = new User;
+        $this->colors = \App\Providers\Common::colors();
     }
 
     //
     public function index()
     {
-      return view('companies.index');
+      $data['title']  = trans('app.companies-title');
+      $data['colors'] = $this->colors;
+      $data['users']  =  $this->users;
+      $data['companies']  =  $this->companies->get();
+
+      return view('companies.index', $data);
     }
 
     public  function create()
