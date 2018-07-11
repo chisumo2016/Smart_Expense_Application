@@ -69,3 +69,14 @@ a.forgot-link{
 }
 a.forgot-link:hover{color: #01c3ff;}
 /*End Login and Register  pages*/
+
+/* Company CSS*/
+.title{
+    text-align: center;
+    font-size: 20px;
+    padding:30px;
+}
+
+.company-style{
+    margin-top: 50px;
+}
