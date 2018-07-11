@@ -246,3 +246,12 @@ a.forgot-link:hover{color: #01c3ff;}
     border-top:1px solid #000000;
     margin-top: -13px;
 }
+
+/*Fixing the nav */
+.navbar-collapse{
+    margin-right: -180px;
+}
+
+.navbar-header{
+    margin-left: -60px;
+}

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="navbar-header">
-                <a href="#" class="navbar-brand heading-style">
+                <a href="{{ route('home') }}" class="navbar-brand heading-style">
 
                     @if(Auth::user()->company_id !=null )
 
@@ -14,6 +14,7 @@
                      @endif
                 </a>
             </div>
+
             <div id="navbar" class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav navbar-toggler-right">
