@@ -7,7 +7,7 @@
                 <h2>{{ $title }}</h2>
             </div>
             <div class="col-sm-4 company-style">
-                <a href="">
+                <a href="{{ route('company.index') }}">
                     <button class="btn btn-primary btn-block">Companies &nbsp; <i class="fa fa-arrow-circle-left"></i></button>
                 </a>
             </div>

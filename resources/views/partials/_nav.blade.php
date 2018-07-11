@@ -5,10 +5,10 @@
             <div class="navbar-header">
                 <a href="#" class="navbar-brand heading-style">OnlineSmart</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse" s>
+            <div id="navbar" class="navbar-collapse collapse">
 
                 <ul class="nav navbar-nav navbar-toggler-right">
-                    <li><a  class="heading-style" href="#">Change Company</a></li>
+                    <li><a  class="heading-style" href="{{ route('company.index')}}">Change Company</a></li>
                     <li><a class="heading-style" href="#">Depart . & Periods</a></li>
                     <li><a class="heading-style" href="#">Budgets</a></li>
                     <li><a class="heading-style"href="#">Expense Request</a></li>
