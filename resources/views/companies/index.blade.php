@@ -25,7 +25,8 @@
                     <?php
                        $class = (Auth::user()->company_id == $company->id ? "bg-{$colors[$i]}" : "border-{$colors[$i]}")  ;
                     ?>
-                    <a href="">
+                    {{--<a href="{{ route('company.active',$company->id) }}" style="display: block;">--}}
+                    <a href="{{ route('company.active','company='.urlencode(base64_encode($company->id))) }}" style="display: block;">
                     <div class="departs-group {{ $class }}">
                         <p>{{ $company->name }}</p>
                     </div>

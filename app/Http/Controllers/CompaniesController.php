@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Company;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class CompaniesController extends Controller
 {
@@ -76,8 +77,10 @@ class CompaniesController extends Controller
 
     }
 
-    public function active()
+    public function active() //$companyid
     {
-
+        $companyid = Input::get('company');
+        $company_id = base64_decode(urlencode($companyid));
+        dd( $company_id);
     }
 }
