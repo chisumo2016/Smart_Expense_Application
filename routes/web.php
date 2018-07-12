@@ -57,7 +57,7 @@ Route::group(['prefix' => '/categories'], function (){
 
 
     Route::get('/create',       'CategoriesController@create')->name('category.create');
-    Route::post('/store',       'CategoriesController@store')->name('category.store');
+    Route::post('/store', 'CategoriesController@store')->name('category.store');
     Route::get('/edit/{id}',    'CategoriesController@edit')->name('category.edit');
     Route::post('/update/{id}', 'CategoriesController@update')->name('category.update');
     Route::get('/delete/{id}',  'CategoriesController@delete')->name('category.delete');
@@ -68,7 +68,7 @@ Route::group(['prefix' => '/categories'], function (){
 
 /**==================Periods Routes================================*/
 
-Route::group(['prefix' => '/categories'], function (){
+Route::group(['prefix' => '/periods'], function (){
 
 
     Route::get('/create',       'PeriodsController@create')->name('period.create');

@@ -1,9 +1,9 @@
 
     <div class="col-sm-6">
-        <h4><b>Category</b></h4>
+        <h4><b>Add Category</b></h4>
         <hr>
 
-        <form action="#" method="post" role="form" class="form-horizontal">
+        <form action="{{ route('category.store') }}" class="form-horizontal" role="form" method="post">
             {{ csrf_field() }}
 
             <input type="hidden" value="{{ Auth::user()->company_id }}" name="company_id">  <!--Relationship-->
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit"  class="btn btn-success" >Add Category</button>
+                    <button type="submit"  class="btn btn-success" >Add </button>
                 </div>
             </div>
         </form>
