@@ -33,9 +33,9 @@ class CategoriesController extends Controller
 
         return redirect()->back()->with('message','New Category Created');
     }
-    public function  edit()
+    public function  edit($id)
     {
-
+       dd($id);
     }
 
 
@@ -44,8 +44,8 @@ class CategoriesController extends Controller
 
     }
 
-    public function  delete()
+    public function  delete($id)
     {
-
+        dd($id);
     }
 }

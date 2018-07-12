@@ -9,13 +9,17 @@
             </tr>
             </thead>
             <tbody>
+            @if(count($categories) > 0)
+                @foreach($categories as $category)
             <tr>
-                <td>Category Name &nbsp; (36)</td>
+                <td>{{ $category->name }} &nbsp; (3)</td>
                 <td>
-                    <a href="#"><i class="fa fa-edit"></i></a>
-                   <a href="#"><i class="fa fa-trash"></i></a>
+                    <a href="{{ route('category.edit',$category->id) }}"><i class="fa fa-edit"></i></a>
+                   <a href="{{ route('category.delete',$category->id) }}"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
+                @endforeach
+             @endif
             </tbody>
 
         </table>
