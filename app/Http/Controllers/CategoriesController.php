@@ -11,7 +11,8 @@ class CategoriesController extends Controller
     //Constructor
     public  function  __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
+        $this->categories = new Category;
     }
 
     //
@@ -35,12 +36,20 @@ class CategoriesController extends Controller
     }
     public function  edit($id)
     {
-       dd($id);
+       $data['category'] = $this->categories->where('id', $id)->first(); //dd($data['category']);
+
+       return view('categories.edit-category',$data);
+
     }
 
 
-    public function  update()
+    public function  update(CreateCategoryRequest $request , $id)
     {
+       $category = $this->categories->where('id', $id)->first();
+       $category->name = $request ->name;
+       $category->save();
+
+        return redirect()->route('categories-periods.index')->with('message','Category Updated Successfully');
 
     }
 
