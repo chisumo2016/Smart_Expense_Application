@@ -12,7 +12,8 @@
 
     <hr>
     <div class="row">
-
+        @include('periods.list-period')
+        @include('categories.list-category')
     </div>
 @endsection
 
