@@ -17,4 +17,37 @@
     </div>
 @endsection
 
+@section('script')
+    <script>
+        $(function () {
+
+            $("#from").datepicker({
+
+                defaultDate: "1w",
+                changeMonth: true,
+                numberOfMonth: 1,
+                changeYear: true,
+                dateFormat: "yy-mm-dd",
+                onClose: function (selectedDate) {
+                    $("to").datepicker("option","minDate",selectedDate);
+                }
+
+            });
+
+            $("#to").datepicker({
+                defaultDate: "1w",
+                changeMonth: true,
+                numberOfMonth: 1,
+                changeYear: true,
+                dateFormat: "yy-mm-dd",
+                onClose: function (selectedDate) {
+                    $("from").datepicker("option","maxDate",selectedDate);
+                }
+
+            });
+        });   /** End of Function  **/
+    </script>
+
+@endsection
+
 {{--.row>.col-sm-12--}}

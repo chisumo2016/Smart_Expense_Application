@@ -13,6 +13,7 @@
                 <strong class="text-danger">{{$errors->first('to') }}</strong>
             </span>
         @endif
+
         <hr>
 
         <form action="{{ route('period.store') }}" method="post" role="form" class="form-horizontal">
@@ -32,7 +33,7 @@
 
                         <span style="background-color: #51595e; color: white; padding: 6px;">to</span>
 
-                        <input type="text" name="to" id="from" size="15px">
+                        <input type="text" name="to" id="to" size="15px">
 
                     </div>
 
@@ -44,6 +45,9 @@
 
         </form>
     </div>
+
+
+
 
 
 {{--.col-sm-6>h4+hr--}}
