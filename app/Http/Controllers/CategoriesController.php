@@ -55,6 +55,10 @@ class CategoriesController extends Controller
 
     public function  delete($id)
     {
-        dd($id);
+        $category = $this->categories->where('id', $id);
+
+        $category->delete();
+
+        return redirect()->back()->with('message','Category Deleted Successfully');
     }
 }
