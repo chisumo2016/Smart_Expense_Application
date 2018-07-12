@@ -44,3 +44,38 @@ Route::group(['prefix' => '/companies'], function (){
     Route::get('/active/','CompaniesController@active')->name('company.active');
 
 });
+
+
+/**==================Categories-Periods  Route======================================================*/
+
+Route::get('categories-period',       'CategoriesPeriodsController@index')->name('categories-periods.index');
+
+
+/**==================Categories Routes================================*=======================*/
+
+Route::group(['prefix' => '/categories'], function (){
+
+
+    Route::get('/create',       'CategoriesController@create')->name('category.create');
+    Route::post('/store',       'CategoriesController@store')->name('category.store');
+    Route::get('/edit/{id}',    'CategoriesController@edit')->name('category.edit');
+    Route::post('/update/{id}', 'CategoriesController@update')->name('category.update');
+    Route::get('/delete/{id}',  'CategoriesController@delete')->name('category.delete');
+
+
+});
+
+
+/**==================Periods Routes================================*/
+
+Route::group(['prefix' => '/categories'], function (){
+
+
+    Route::get('/create',       'PeriodsController@create')->name('period.create');
+    Route::post('/store',       'PeriodsController@store')->name('period.store');
+    Route::get('/edit/{id}',    'PeriodsController@edit')->name('period.edit');
+    Route::post('/update/{id}', 'PeriodsController@update')->name('period.update');
+    Route::get('/delete/{id}',  'PeriodsController@delete')->name('period.delete');
+
+
+});
