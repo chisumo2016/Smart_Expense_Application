@@ -19,7 +19,7 @@
 
                 <ul class="nav navbar-nav navbar-toggler-right">
                     <li><a  class="heading-style" href="{{ route('company.index')}}">Change Company</a></li>
-                    <li><a class="heading-style" href="#">Depart . & Periods</a></li>
+                    <li><a class="heading-style" href="{{ route('categories-periods.index')}}">Depart . & Periods</a></li>
                     <li><a class="heading-style" href="#">Budgets</a></li>
                     <li><a class="heading-style"href="#">Expense Request</a></li>
                     <li><a class="heading-style" href="#">Users &nbsp; <i class="fa fa-user"></i></a></li>

@@ -14,6 +14,6 @@ class CategoriesPeriodsController extends Controller
     //
     public function index()
     {
-
+        return view('categories_periods.index');
     }
 }

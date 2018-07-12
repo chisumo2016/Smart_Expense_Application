@@ -1,11 +1,9 @@
-@extends('layouts.main')
 
-@section('content')
     <div class="col-sm-6">
         <h4><b>Category</b></h4>
         <hr>
 
-        <form action="{{ route('category.store') }}" method="post" role="form" class="form-horizontal">
+        <form action="#" method="post" role="form" class="form-horizontal">
             {{ csrf_field() }}
 
             <input type="hidden" value="{{ Auth::user()->company_id }}" name="company_id">  <!--Relationship-->
@@ -14,7 +12,7 @@
 
                 <label for="name" class="col-sm-2 form-control-label">Name :</label>
 
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <input type="text" class="form-control" name="name">
                     @if($errors->has('name'))
                         <span class="help-block">
@@ -22,11 +20,14 @@
                          </span>
                     @endif
                 </div>
-                <button class="btn btn-success">Add Category</button>
+
+                <div class="form-group">
+                    <button type="submit"  class="btn btn-success" >Add Category</button>
+                </div>
             </div>
         </form>
     </div>
-@endsection
+
 
 {{--.col-sm-6>h4+hr--}}
 {{--.form-group>label+.col-sm-8>input--}}
