@@ -12,6 +12,7 @@ class PeriodsController extends Controller
     public  function  __construct()
     {
         $this->middleware('auth');
+        $this->periods = new Period();
     }
 
     //
@@ -35,12 +36,14 @@ class PeriodsController extends Controller
 
     public function  edit($id)
     {
-        dd($id);
+        $data['period'] =$this->periods->where('id',$id)->first();  // dd($data['period']);
+
+        return view('periods.edit-period',$data);
     }
 
-    public function  update()
+    public function  update(Request $request ,$id)
     {
-
+        dd($request);
     }
 
     public function  delete($id)
