@@ -64,7 +64,7 @@ class UsersController extends Controller
             //Access the id of new created user details
             $user_id = $users->id;
             foreach ($request->access as $companyId => $category )
-            {
+            {// $KEY => $VALUE
                 if(count($category) >  0)
                 {
                     foreach ($category as $cat)
@@ -73,7 +73,7 @@ class UsersController extends Controller
                         $userDetail['company_id']       = $companyId;
                         $userDetail['category_id']      = $cat;
 
-                        $user_detail = new User_Detail( $userDetail);
+                        $user_detail = new User_Detail($userDetail);
                         $user_detail->save();
 
 
@@ -82,10 +82,10 @@ class UsersController extends Controller
                 //dd($request);
             }
 
-            return redirect()->route('user.index')->with('message', 'New Record Inserted');
+
         }
 
-
+        return redirect()->route('user.index')->with('message', 'New Record Inserted');
        //dd($request);
     }
 
