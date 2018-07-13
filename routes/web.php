@@ -79,3 +79,28 @@ Route::group(['prefix' => '/periods'], function (){
 
 
 });
+
+
+/**==================Users Routes================================*/
+
+Route::group(['prefix' => '/users'], function (){
+
+
+    Route::get('/',             'UsersController@create')->name('user.index');
+    Route::get('/create',       'UsersController@create')->name('user.create');
+    Route::post('/store',       'UsersController@store')->name('user.store');
+    Route::get('/edit/{id}',    'UsersController@edit')->name('user.edit');
+    Route::post('/update/{id}', 'UsersController@update')->name('user.update');
+    Route::get('/delete/{id}',  'UsersController@delete')->name('user.delete');
+
+});
+
+
+
+
+
+
+
+
+
+
