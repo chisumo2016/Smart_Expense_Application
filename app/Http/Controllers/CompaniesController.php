@@ -26,7 +26,8 @@ class CompaniesController extends Controller
       $data['title']  = trans('app.companies-title');
       $data['colors'] = $this->colors;
       $data['users']  =  $this->users;
-      $data['companies']  =  $this->companies->get();
+      //$data['companies']  =  $this->companies->where('user_id', Auth::user()->id)->get();  //$data['companies']  =  $this->companies->get();
+      $data['companies']  =  $this->companies->whereUser();  //Refining the company Mode;
 
       return view('companies.index', $data);
     }

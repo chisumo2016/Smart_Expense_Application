@@ -20,6 +20,12 @@ class CategoriesPeriodsController extends Controller
     public function index()
     {
         //dd(Auth::user());
+        if (Auth::user()->company_id == NULL)
+        {
+            return redirect()->route('company.index')->with('error','please Create / Select your company first ');
+        }
+
+
         $data['categories'] = $this->categories->orderBy('name', 'ASC')->where('company_id',Auth::user()->company_id)->get();
         $data['periods'] =    $this->periods->get();
 
