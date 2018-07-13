@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePeriodRequest;
+use App\Period;
 use Illuminate\Http\Request;
 
 class PeriodsController extends Controller
@@ -23,9 +25,12 @@ class PeriodsController extends Controller
 
     }
 
-    public  function  store()
+    public  function  store(CreatePeriodRequest $request)
     {
+       $period = new Period($request->all());
+       $period->save();
 
+       return redirect()->back()->with('message', 'New Perid created Sucessfully');
     }
 
     public function  edit()

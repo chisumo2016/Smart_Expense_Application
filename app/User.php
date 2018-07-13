@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    //user has many comany
+    //user has many company
     public function  companies()
     {
         return $this->hasMany('App\Company');
