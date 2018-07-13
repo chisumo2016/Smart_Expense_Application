@@ -148,10 +148,10 @@
                     <div class="col-sm-10">
                         @if(count($companies))
                             @foreach($companies as $company)
-                        <label for=""> <input type="checkbox" name="access[{{ $company->id }}]"  value="{{$company->id}}">&nbsp;{{ $company->name }}</label><br>
+                        <label for=""> <input type="checkbox" name="access[{{ $company->id }}]" onclick="categories($(this) {{ $company->id }})"  value="{{$company->id}}">&nbsp;{{ $company->name }}</label><br>
                             @if(count(\App\Category::whereUser($company->id)))
 
-                        <ul style="list-style: none;" id="checkbox{{ $company->id }}">
+                        <ul style="list-style: none;" id="checkbox_{{ $company->id }}">
 
                             @foreach(\App\Category::whereUser($company->id) as $category)
                             <li>
@@ -213,6 +213,17 @@
                 $("#accessibilities").show();
             }
 
+        }
+
+        {{--Jquery Function for uchecked  -ACL--}}
+        function categories(e, id)
+        {
+            if(e.is(":checked"))
+            {
+
+            }else {
+                $("#checkbox_"+id).hide();
+            }
         }
     </script>
 
