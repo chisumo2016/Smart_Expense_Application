@@ -119,11 +119,13 @@
                         @endif
                     </div>
                 </div>
+
                 {{--onchange="accessibilities($(this).val())--}}
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}" >
+
                     <label for="role" class="col-sm-2 form-control-label">Role :</label>
                     <div class="col-sm-10">
-                        <select name="role" id="role" class="form-control" >
+                        <select name="role" id="role" class="form-control" onchange="accessibilities($(this).val())">
                             <option value="">Choose Role</option>
 
                              @if(count($roles) > 0)
@@ -141,7 +143,7 @@
                     </div>
                 </div>
 
-                <div class="form-group" id="accessibility">
+                <div class="form-group" id="accessibilities" style="display: none">
                     <label for="permission" class="col-sm-2 form-control-label">Permission</label>
                     <div class="col-sm-10">
                         @if(count($companies))
@@ -153,7 +155,7 @@
 
                             @foreach(\App\Category::whereUser($company->id) as $category)
                             <li>
-                                <label for=""><input type="checkbox" value="{{ $category->id }}" name="access[{{ $company->id }}][]">&nbsp; {{$category->name}}</label>
+                                <label for=""><input type="checkbox" class="categories" value="{{ $category->id }}" name="access[{{ $company->id }}][]">&nbsp; {{$category->name}}</label>
                             </li>
                              @endforeach
                         </ul>
@@ -187,6 +189,35 @@
 
 @endsection
 
+{{--Jquery Function for Role -ACL--}}
+@section('script')
+
+    <script>
+        function accessibilities(role)
+        {
+          if(role ==    1 || role == '')
+          {
+              $("#accessibilities").attr("type", "checkbox");
+              $("#accessibilities").show();
+          }
+
+            if(role ==  2 )
+            {
+                $(".categories").attr("type", "checkbox");
+                $("#accessibilities").show();
+            }
+
+            if(role ==  3 )
+            {
+                $(".categories").attr("type", "radio");
+                $("#accessibilities").show();
+            }
+
+        }
+    </script>
+
+
+@endsection
 {{--.row>.col-md-12>.col-sm-8>h2>.col-sm-4>a--}}
 {{--.row>col-sm-8.col-sm-offset-2>form.form-horizontal--}}
 {{--.form-group#accessibility>label+.col-sm-10>label+input+ul>li--}}
