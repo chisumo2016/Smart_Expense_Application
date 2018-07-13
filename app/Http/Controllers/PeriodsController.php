@@ -33,9 +33,9 @@ class PeriodsController extends Controller
        return redirect()->back()->with('message', 'New Perid created Sucessfully');
     }
 
-    public function  edit()
+    public function  edit($id)
     {
-
+        dd($id);
     }
 
     public function  update()
@@ -43,8 +43,8 @@ class PeriodsController extends Controller
 
     }
 
-    public function  delete()
+    public function  delete($id)
     {
-
+       dd($id);
     }
 }

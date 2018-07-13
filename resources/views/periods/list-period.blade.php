@@ -9,14 +9,19 @@
             </tr>
             </thead>
             <tbody>
+            @if(count($periods) > 0)
+                @foreach($periods as $period)
             <tr>
-                <td>2018-01-09</td>
-                <td>2018-04-30</td>
+                <td>{{ \App\Providers\Common::formatDate($period->from) }}</td>
+                <td>{{ \App\Providers\Common::formatDate($period->to) }}</td>
                 <td>
-                    <a href=""><i class="fa fa-edit"></i></a>
-                    <a href=""><i class="fa fa-trash"></i></a>
+                    <a href="{{ route('period.edit',   $period->id) }}"><i class="fa fa-edit"></i></a>
+                    <a href="{{ route('period.delete', $period->id) }}"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
+                @endforeach
+
+                @endif
 
             </tbody>
 

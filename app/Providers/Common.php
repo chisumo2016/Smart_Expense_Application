@@ -34,4 +34,9 @@ class Common extends ServiceProvider
             'blue','yellow','red','magenta','green','violet','gray','brown','purple','orange'
         ];
     }
+
+    public static function  formatDate($date)
+    {
+        return date('F ,d, Y', strtotime($date));
+    }
 }
