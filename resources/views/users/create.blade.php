@@ -21,6 +21,10 @@
             <form action="{{ route('user.store') }}" class="form-horizontal" role="form" method="post">
                 {{ csrf_field() }}
 
+                <input type="hidden" value="{{ Auth::user()->company_id }}" name="company_id">
+                <input type="hidden" value="{{ Auth::user()->country }}" name="country">
+                <input type="hidden" value="{{ Auth::user()->state }}" name="state">
+
                 <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
 
                     <label for="name" class="col-sm-2 col-form-label">Name: </label>
@@ -215,7 +219,7 @@
 
         }
 
-        {{--Jquery Function for uchecked  -ACL--}}
+        {{--Jquery Function for uchecked  checkbox -ACL--}}
         function categories(e, id)
         {
             if(e.is(":checked"))
