@@ -25,9 +25,14 @@ class CategoriesPeriodsController extends Controller
             return redirect()->route('company.index')->with('error','please Create / Select your company first ');
         }
 
+           /*Old way */
+        //$data['categories'] = $this->categories->orderBy('name', 'ASC')->where('company_id',Auth::user()->company_id)->get();
+        //$data['periods'] =    $this->periods->get();
 
-        $data['categories'] = $this->categories->orderBy('name', 'ASC')->where('company_id',Auth::user()->company_id)->get();
-        $data['periods'] =    $this->periods->get();
+        /*New way */
+        $data['categories'] = $this->categories->whereUser();
+        $data['periods'] =    $this->periods->whereUser();
+
 
         return view('categories_periods.index',$data);
     }
