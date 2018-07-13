@@ -6,7 +6,7 @@
 
 <body style="background-color: #272b2f !important; color: #d9534f !important;">
 
-@include("partials._nav")
+{{--@include("partials._nav") wrong--}}
 
 <div class="container">
   <div class="row">

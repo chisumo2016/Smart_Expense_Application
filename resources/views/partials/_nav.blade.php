@@ -5,9 +5,9 @@
             <div class="navbar-header">
                 <a href="{{ route('home') }}" class="navbar-brand heading-style">
 
-                    @if(Auth::user()->company_id !=null )
+                    @if(Auth::user()->company_id !=NULL )
 
-                        {{ Auth::user()->company_name }}
+                        {{ Auth()->user()->company_name }}
 
                         @else
                         {{ trans('app.companies-title') }} <i class="fa fa-btc"></i>

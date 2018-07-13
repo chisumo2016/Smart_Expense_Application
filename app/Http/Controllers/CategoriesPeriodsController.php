@@ -19,7 +19,7 @@ class CategoriesPeriodsController extends Controller
     //
     public function index()
     {
-    
+        //dd(Auth::user());
         $data['categories'] = $this->categories->orderBy('name', 'ASC')->where('company_id',Auth::user()->company_id)->get();
         $data['periods'] =    $this->periods->get();
 
