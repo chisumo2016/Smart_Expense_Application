@@ -51,7 +51,7 @@
 
             </div>
             <div class="form-group">
-                <button type="submit"  class="btn btn-success pull-left" >Add Periods</button>
+                <button type="submit"  class="btn btn-success pull-left" >Update Periods</button>
             </div>
         </div>
 

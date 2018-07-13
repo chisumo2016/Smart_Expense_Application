@@ -41,13 +41,24 @@ class PeriodsController extends Controller
         return view('periods.edit-period',$data);
     }
 
-    public function  update(Request $request ,$id)
+    public function  update(CreatePeriodRequest $request ,$id)
     {
-        dd($request);
+        $period = $this->periods->where('id',$id)->first();
+        $period->from = $request ->from;
+        $period->to   = $request ->to;
+
+        $period->save();
+
+        return redirect()->route('categories-periods.index')->with('message','Periods Updated Successfully');
+
+        //dd($request);
     }
 
     public function  delete($id)
     {
-       dd($id);
+        $period = $this->periods->where('id',$id);
+        $period->delete();
+        return redirect()->back()->with('error','Periods Delete Successfully');
+//       dd($id);
     }
 }
