@@ -24,39 +24,49 @@
 
 
     <div class="row">
-        <div class="col-sm-8 col-offset-2">
-            <div>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Status</th>
-                        <th>Role</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @if(count($users > 0))
-                            @foreach($)
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
 
-                     @endif
-                    </tbody>
-                </table>
+            <div class="col-sm-8 col-offset-2">
+                <div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>Role</th>
+                            <th>Action</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(count($users) > 0)
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone}}</td>
+                                    <td>
+                                        @if($user->status == "on")
+                                            Active
+                                        @else
+                                            Deactive
+                                        @endif
+                                    </td>
+                                    <td>{{ $user->role }}</td>
+                                    <td>
+                                        <a href="{{ route('user.edit',   $user->id) }}"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('user.delete', $user->id) }}" onclick="return confirm('Are you sure , you wish to proceed')"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+
 
 @endsection
 
