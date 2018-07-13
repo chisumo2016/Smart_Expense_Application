@@ -14,4 +14,51 @@
         </div>
     </div>
 
+    <hr>
+
+    <div class="row" style="margin-top:  100px;">
+        <div class="col-sm-8 col-sm-offset-2">
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-8 col-offset-2">
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                        <th>Role</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @if(count($users > 0))
+                            @foreach($)
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                     @endif
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 @endsection
+
+{{--.row>.col-sm-8.col-sm-offset-2--}}
+{{--.row>.col-sm-8.col-offset-2>div>table.table.table-hover>thead(tr>th*7)+tbody(tr>td*7)--}}
