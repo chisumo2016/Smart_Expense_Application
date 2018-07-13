@@ -6,6 +6,7 @@ use App\Category;
 use App\Company;
 use App\Http\Requests\CreateUserRequest;
 use App\User;
+use App\User_Detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +26,7 @@ class UsersController extends Controller
     //
     public function index()
     {
-
+       return view('users.index');
     }
 
     public  function create()
@@ -49,6 +50,7 @@ class UsersController extends Controller
         $data['password']       =  bcrypt($request->password);
         $data['phone']          =  $request->phone;
         $data['city']           =  $request->city;
+        $data['postal_code']    =  $request->postal_code;
         $data['address']        =  $request->address;
         $data['role']           =  $request->role;
         $data['status']         =  $request->status;
@@ -57,7 +59,33 @@ class UsersController extends Controller
         $users = new User($data);
         $users->save();
 
-        
+        if(count($request->access) > 0)  // create form
+        {
+            //Access the id of new created user details
+            $user_id = $users->id;
+            foreach ($request->access as $companyId => $category )
+            {
+                if(count($category) >  0)
+                {
+                    foreach ($category as $cat)
+                    {
+                        $userDetail['user_id']          = $user_id;
+                        $userDetail['company_id']       = $companyId;
+                        $userDetail['category_id']      = $cat;
+
+                        $user_detail = new User_Detail( $userDetail);
+                        $user_detail->save();
+
+
+                    }
+                }
+                //dd($request);
+            }
+
+            return redirect()->route('user.index')->with('message', 'New Record Inserted');
+        }
+
+
        //dd($request);
     }
 
