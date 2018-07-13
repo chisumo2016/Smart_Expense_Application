@@ -12,10 +12,10 @@ class Company extends Model
 
     //this company belongs this user  1:M
 
-   /* public function  user()
+    public function  user()
     {
         return $this->belongsTo('App\User');
-    }*/
+    }
 }
 
 
