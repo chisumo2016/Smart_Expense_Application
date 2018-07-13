@@ -13,6 +13,7 @@ class UsersController extends Controller
     public  function  __construct()
     {
         $this->middleware('auth');
+
         $this->categories  = new Category();
         $this->companies   = new Company();
         $this->users       = new User();
@@ -27,16 +28,16 @@ class UsersController extends Controller
 
     public  function create()
     {
-        $data['users']       = $this->users->role();
+        $data['roles']       = $this->users->roles();
         $data['companies']   = $this->companies->whereUser();
-        $data['categories']  = $this->categories->role();
+        $data['categories']  = $this->categories->whereUser();
 
        return view('users.create', $data);
     }
 
-    public  function  store()
+    public  function  store(Request $request)
     {
-
+       dd($request);
     }
 
     public function  edit()

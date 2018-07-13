@@ -24,7 +24,7 @@
 
                             @if ($errors->has('name'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('name') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('name') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -38,7 +38,7 @@
 
                             @if ($errors->has('email'))
                                 <span class="help-block" role="alert">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('email') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -52,7 +52,7 @@
 
                             @if ($errors->has('password'))
                                 <span class="help-block" role="alert">
-                                    <strong>{{ $errors->first('password') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('password') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -74,7 +74,7 @@
 
                             @if ($errors->has('phone'))
                                 <span class="help-block" role="alert">
-                                    <strong>{{ $errors->first('phone') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('phone') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -98,7 +98,7 @@
 
                             @if ($errors->has('country'))
                                 <span class="help-block" >
-                                    <strong>{{ $errors->first('country') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('country') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -117,7 +117,7 @@
                             <img src="{{ asset('images/spinner.gif') }}" id="loader" style="position: absolute; right:-9px; top:9px; display: none">
                             @if ($errors->has('state'))
                                 <span class="help-block" >
-                                    <strong>{{ $errors->first('state') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('state') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -129,7 +129,7 @@
                             <input type="text" class="form-control" name="city" id="city" value="{{ old('city') }}" placeholder="City" autofocus>
                             @if ($errors->has('city'))
                                 <span class="help-block" >
-                                    <strong>{{ $errors->first('state') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('state') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -142,7 +142,7 @@
                             <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}" placeholder="Address" autofocus>
                             @if ($errors->has('address'))
                                 <span class="help-block" >
-                                    <strong>{{ $errors->first('address') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('address') }}</strong>
                                 </span>
                             @endif
                         </div>
@@ -155,7 +155,7 @@
                             <input type="text" class="form-control" name="postal_code" id="postal_code" value="{{ old('postal_code') }}" placeholder="Postal Code" autofocus>
                             @if ($errors->has('postal_code'))
                                 <span class="help-block" >
-                                    <strong>{{ $errors->first('postal_code') }}</strong>
+                                    <strong class="text-danger">{{ $errors->first('postal_code') }}</strong>
                                 </span>
                             @endif
                         </div>
