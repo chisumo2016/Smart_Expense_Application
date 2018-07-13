@@ -141,6 +141,28 @@
                     </div>
                 </div>
 
+                <div class="form-group" id="accessibility">
+                    <label for="permission" class="col-sm-2 form-control-label">Permission</label>
+                    <div class="col-sm-10">
+                        @if(count($companies))
+                            @foreach($companies as $company)
+                        <label for=""> <input type="checkbox" name="access[{{ $company->id }}]"  value="{{$company->id}}">&nbsp;{{ $company->name }}</label><br>
+                            @if(count(\App\Category::whereUser($company->id)))
+
+                        <ul style="list-style: none;" id="checkbox{{ $company->id }}">
+
+                            @foreach(\App\Category::whereUser($company->id) as $category)
+                            <li>
+                                <label for=""><input type="checkbox" value="{{ $category->id }}" name="access[{{ $company->id }}][]">&nbsp; {{$category->name}}</label>
+                            </li>
+                             @endforeach
+                        </ul>
+                             @endif
+                        @endforeach
+                        @endif
+                    </div>
+                </div>
+
                 <div class="form-group {{ $errors->has('role') ? 'has-error' : '' }}">
                     <label for="status" class="col-sm-2 form-control-label">Status</label>
                     <div class="col-sm-10">
@@ -158,15 +180,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
-
             </form>
         </div>
     </div>
@@ -176,3 +189,5 @@
 
 {{--.row>.col-md-12>.col-sm-8>h2>.col-sm-4>a--}}
 {{--.row>col-sm-8.col-sm-offset-2>form.form-horizontal--}}
+{{--.form-group#accessibility>label+.col-sm-10>label+input+ul>li--}}
+
