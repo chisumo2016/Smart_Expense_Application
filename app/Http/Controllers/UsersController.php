@@ -188,8 +188,12 @@ class UsersController extends Controller
         //dd($users);
     }
 
-    public function  delete()
+    public function  delete($id)
     {
+          $user =User::find($id);
+          $user->delete();
+
+        return redirect()->back()->with('message', 'Record Deleted');
 
     }
 }
