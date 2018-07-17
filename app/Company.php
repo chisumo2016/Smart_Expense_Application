@@ -29,11 +29,27 @@ class Company extends Model
             {
                $user = Auth::user()->parent_id ;
             }
+            //Uptimizing Company Mode
+            $AND = "";
+            if(Auth::user()->role != 1)
+            {
+
+                $AND = "
+                    AND c.id IN (
+                    
+                       SELECT ud.company_id
+                       FROM  user_details as ud
+                       WHERE  ud.user_id   = ".Auth::user()->id." 
+                    )
+                
+                ";
+            }
 
             return DB::select(DB::raw("
              SELECT *
              FROM companies as c
              WHERE user_id = $user
+             $AND
             
             
             "));
