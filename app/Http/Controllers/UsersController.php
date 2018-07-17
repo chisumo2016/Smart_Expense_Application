@@ -90,8 +90,24 @@ class UsersController extends Controller
        //dd($request);
     }
 
-    public function  edit()
+    public function  edit($id)
     {
+
+        //Data Array
+        $data['roles']          =       $this->users->roles();
+        $data['companies']      =       $this->companies->whereUser();
+        $data['categories']     =       $this->categories->whereUser();
+        $data['user']           =       $this->users;
+        $data['user']           =       $this->users->whereUser($id);
+        $data['user']           =       $data['user'][0];
+
+        $data['id']             =       $id;
+
+        return view('users.edit', $data);
+
+        //dd($data['user']);
+
+           //dd($id);exit();
 
     }
 
