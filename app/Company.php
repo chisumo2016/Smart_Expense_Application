@@ -29,6 +29,7 @@ class Company extends Model
             {
                $user = Auth::user()->parent_id ;
             }
+
             //Uptimizing Company Mode
             $AND = "";
             if(Auth::user()->role != 1)
