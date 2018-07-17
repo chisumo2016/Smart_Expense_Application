@@ -134,7 +134,7 @@
 
                             @if(count($roles) > 0)
                                 @foreach($roles as $role)
-                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    <option value="{{ $role->id }}" <?php if($role->id === $user->role ){echo 'selected';} ?>>{{ $role->name }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
 
-                <?php  $display  = " "; if($user->role == 1){$display = 'style ="display:none" ';}?>
+                <?php  $display  = " "; if($user->role == 1){$display = 'style ="display:none;" ';}?>
 
                 <?php  $checkbox = "checkbox"; if($user->role == 3){$checkbox = 'radio';} ?>
 
@@ -177,8 +177,10 @@
                     <label for="status" class="col-sm-2 form-control-label">Status</label>
                     <div class="col-sm-10">
                         <select id="status" class="form-control" name="status">
-                            <option value="on" selected="">Active</option>
-                            <option value="off" >Deactive</option>
+                            {{--<option value="on" selected="">Active</option>--}}
+                            {{--<option value="off" >Deactive</option>--}}
+                            <option value="on" <?php if ($user->status == "on"){echo 'selected';} ?>>Active</option>
+                            <option value="off"<?php  if($user->status == "off"){echo 'selected';}?> Deactive</option>
                         </select>
                     </div>
                 </div>

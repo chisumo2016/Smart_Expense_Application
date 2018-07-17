@@ -130,16 +130,28 @@ class UsersController extends Controller
             ]);
         }
 
-        $data['name']           =  $request->name;
-        $data['email']          =  $request->email;
-        $data['phone']          =  $request->phone;
-        $data['city']           =  $request->city;
-        $data['postal_code']    =  $request->postal_code;
-        $data['address']        =  $request->address;
-        $data['role']           =  $request->role;
-        $data['status']         =  $request->status;
+        $users->name            =  $request->name;
+        $users->email           =  $request->email;
+        $users->phone           =  $request->phone;
+        $users->city            =  $request->city;
+        $users->postal_code     =  $request->postal_code;
+        $users->address         =  $request->address;
+        $users->role            =  $request->role;
+        $users->status          =  $request->status;
+
+/*        $data['name']           =  $request->name;
+//        $data['email']          =  $request->email;
+//        $data['phone']          =  $request->phone;
+//        $data['city']           =  $request->city;
+//        $data['postal_code']    =  $request->postal_code;
+//        $data['address']        =  $request->address;
+//        $data['role']           =  $request->role;
+          $data['status']         =  $request->status;*/
+
 
         $users->save();
+
+        //exit();
 
         //Flushing all before updating
         User_Detail::where('user_id', $id)->delete();
