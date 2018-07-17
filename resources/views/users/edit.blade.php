@@ -147,19 +147,23 @@
                     </div>
                 </div>
 
-                <div class="form-group" id="accessibilities" style="display: none">
+                <?php  $display  = " "; if($user->role == 1){$display = 'style="display:none"';}?>
+
+                <?php  $checkbox = "checkbox"; if($user->role == 3){$checkbox; 'radio';} ?>
+
+                <div class="form-group" id="accessibilities" <?php echo $display; ?>
                     <label for="permission" class="col-sm-2 form-control-label">Permission</label>
                     <div class="col-sm-10">
                         @if(count($companies))
                             @foreach($companies as $company)
-                                <label for=""> <input type="checkbox" name="access[{{ $company->id }}]" onclick="categories($(this) {{ $company->id }})"  value="{{$company->id}}">&nbsp;{{ $company->name }}</label><br>
+                                <label for=""> <input type="checkbox" name="access[{{ $company->id }}]" onclick="categories($(this) {{ $company->id }})" <?php if($users->exists($id, $company->id)){echo 'checked';} ?>&nbsp; value="{{$company->id}}">&nbsp;{{ $company->name }}</label><br>
                                 @if(count(\App\Category::whereUser($company->id)))
 
                                     <ul style="list-style: none;" id="checkbox_{{ $company->id }}">
 
                                         @foreach(\App\Category::whereUser($company->id) as $category)
                                             <li>
-                                                <label for=""><input type="checkbox" class="categories" value="{{ $category->id }}" name="access[{{ $company->id }}][]">&nbsp; {{$category->name}}</label>
+                                                <label for=""><input type="{{ $checkbox }}"  value="{{ $category->id }}" name="access[{{ $company->id }}][]"   class="categories" <?php if($users->exists($id, $company->id, $category->id)) {echo 'checked'; }?>>&nbsp; {{$category->name}}</label>
                                             </li>
                                         @endforeach
                                     </ul>

@@ -84,5 +84,32 @@ class User extends Authenticatable
 
     }
 
+    // edit user
+
+    public function  exists($id = NULL, $company_id = NULL, $category_id = NULL)
+    {
+        $parent_id = Auth::user()->parent_id ;
+        if (Auth::user()->parent_id == 0)
+        {
+            $parent_id = Auth::user()->id;
+        }
+
+        $table = DB ::table('user_details');
+        $table->where('user_id', $id);
+        $table->where('company_id', $company_id);
+        if($category_id != NULL)
+        {
+            $table->where('category_id',$category_id);
+        }
+
+        $result = $table->get();
+        if(count($result) > 0)
+        {
+            return TRUE;
+        }
+
+        return FALSE;
+    }
+
 
 }
