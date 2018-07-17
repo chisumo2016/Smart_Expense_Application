@@ -26,20 +26,33 @@ class CompaniesController extends Controller
       $data['title']  = trans('app.companies-title');
       $data['colors'] = $this->colors;
       $data['users']  =  $this->users;
-      //$data['companies']  =  $this->companies->where('user_id', Auth::user()->id)->get();  //$data['companies']  =  $this->companies->get();
       $data['companies']  =  $this->companies->whereUser();  //Refining the company Mode;
+      //$data['companies']  =  $this->companies->where('user_id', Auth::user()->id)->get();  //$data['companies']  =  $this->companies->get();
+
 
       return view('companies.index', $data);
     }
 
     public  function create()
     {
+        // Appy ACL
+        if(Auth::user()->role == 2 || Auth::user()->role == 3)
+        {
+            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+        }
+
         $data['title'] = trans('app.companies-create');
-       return view('companies.create', $data);
+        return view('companies.create', $data);
     }
 
     public  function  store(CreateCompanyRequest $request)
     {
+        // Appy ACL
+        if(Auth::user()->role == 2 || Auth::user()->role == 3)
+        {
+            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+        }
+
         $company = new Company($request->all());
         Auth::user()->companies()->save($company);
         return redirect()->back()->with('message','New Company Created');

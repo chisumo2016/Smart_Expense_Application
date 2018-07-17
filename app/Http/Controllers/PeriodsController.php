@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePeriodRequest;
 use App\Period;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PeriodsController extends Controller
 {
@@ -28,6 +29,11 @@ class PeriodsController extends Controller
 
     public  function  store(CreatePeriodRequest $request)
     {
+        if(Auth::user()->role == 2 || Auth::user()->role == 3)
+        {
+            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+        }
+
        $period = new Period($request->all());
        $period->save();
 
@@ -36,6 +42,13 @@ class PeriodsController extends Controller
 
     public function  edit($id)
     {
+        //ACL
+        if(Auth::user()->role == 2 || Auth::user()->role == 3)
+        {
+            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+        }
+
+
         $data['period'] =$this->periods->where('id',$id)->first();  // dd($data['period']);
 
         return view('periods.edit-period',$data);
@@ -43,6 +56,12 @@ class PeriodsController extends Controller
 
     public function  update(CreatePeriodRequest $request ,$id)
     {
+        if(Auth::user()->role == 2 || Auth::user()->role == 3)
+        {
+            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+        }
+
+
         $period = $this->periods->where('id',$id)->first();
         $period->from = $request ->from;
         $period->to   = $request ->to;
@@ -56,6 +75,12 @@ class PeriodsController extends Controller
 
     public function  delete($id)
     {
+        if(Auth::user()->role == 2 || Auth::user()->role == 3)
+        {
+            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+        }
+
+
         $period = $this->periods->where('id',$id);
         $period->delete();
         return redirect()->back()->with('error','Periods Delete Successfully');
