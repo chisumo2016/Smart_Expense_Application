@@ -147,16 +147,16 @@
                     </div>
                 </div>
 
-                <?php  $display  = " "; if($user->role == 1){$display = 'style="display:none"';}?>
+                <?php  $display  = " "; if($user->role == 1){$display = 'style ="display:none" ';}?>
 
-                <?php  $checkbox = "checkbox"; if($user->role == 3){$checkbox; 'radio';} ?>
+                <?php  $checkbox = "checkbox"; if($user->role == 3){$checkbox = 'radio';} ?>
 
-                <div class="form-group" id="accessibilities" <?php echo $display; ?>
+                <div class="form-group" id="accessibilities" <?php echo $display; ?>  >
                     <label for="permission" class="col-sm-2 form-control-label">Permission</label>
                     <div class="col-sm-10">
                         @if(count($companies))
                             @foreach($companies as $company)
-                                <label for=""> <input type="checkbox" name="access[{{ $company->id }}]" onclick="categories($(this) {{ $company->id }})" <?php if($users->exists($id, $company->id)){echo 'checked';} ?>&nbsp; value="{{$company->id}}">&nbsp;{{ $company->name }}</label><br>
+                                <label for=""> <input type="checkbox" name="access[{{ $company->id }}]" onclick="categories($(this) {{ $company->id }})" <?php if($users->exists($id, $company->id)){echo 'checked';} ?>&nbsp;  value="{{$company->id}}">&nbsp;{{ $company->name }}</label><br>
                                 @if(count(\App\Category::whereUser($company->id)))
 
                                     <ul style="list-style: none;" id="checkbox_{{ $company->id }}">
@@ -201,6 +201,15 @@
 @section('script')
 
     <script>
+        function  categories(e, id)
+        {
+             if (e.is(":checked"))
+             {
+
+             }else {
+                 $("#checkbox_"+id).hide();
+             }
+        }
         function accessibilities(role)
         {
             if(role ==    1 || role == '')

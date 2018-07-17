@@ -97,7 +97,7 @@ class UsersController extends Controller
         $data['roles']          =       $this->users->roles();
         $data['companies']      =       $this->companies->whereUser();
         $data['categories']     =       $this->categories->whereUser();
-        $data['user']           =       $this->users;
+        $data['users']          =       $this->users;
         $data['user']           =       $this->users->whereUser($id);
         $data['user']           =       $data['user'][0];
 
@@ -105,15 +105,75 @@ class UsersController extends Controller
 
         return view('users.edit', $data);
 
-        //dd($data['user']);
+        //dd($data['user']); //dd($id);exit();
 
-           //dd($id);exit();
+
 
     }
 
-    public function  update()
+    public function  update(Request $request, $id)
     {
+        $users = User::find($id);
 
+        //validating
+        if($request->input('email') == $users->email)
+        {
+            $this->validate($request,[
+                'name'  => 'required',
+                'role'  => 'required',
+            ]);
+        }else{
+            $this->validate($request,[
+                'name'  => 'required',
+                'email' => 'required|unique:users',
+                'role'  => 'required',
+            ]);
+        }
+
+        $data['name']           =  $request->name;
+        $data['email']          =  $request->email;
+        $data['phone']          =  $request->phone;
+        $data['city']           =  $request->city;
+        $data['postal_code']    =  $request->postal_code;
+        $data['address']        =  $request->address;
+        $data['role']           =  $request->role;
+        $data['status']         =  $request->status;
+
+        $users->save();
+
+        //Flushing all before updating
+        User_Detail::where('user_id', $id)->delete();
+
+        if(count($request->access) > 0)  // create form
+        {
+            //Access the id of new created user details
+            $user_id = $users->id;
+            foreach ($request->access as $companyId => $category )
+            {
+                // $key => $value
+
+                if(count($category) >  0)
+                {
+                    foreach ($category as $cat)
+                    {
+                        $userDetail['user_id']          = $user_id;
+                        $userDetail['company_id']       = $companyId;
+                        $userDetail['category_id']      = $cat;
+
+                        $user_detail = new User_Detail($userDetail);
+                        $user_detail->save();
+
+
+                    }
+                }
+                //dd($request);
+            }
+
+        }
+
+        return redirect()->route('user.index')->with('message', 'New Record Update');
+        //dd($request);
+        //dd($users);
     }
 
     public function  delete()
