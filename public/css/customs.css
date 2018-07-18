@@ -255,3 +255,187 @@ a.forgot-link:hover{color: #01c3ff;}
 .navbar-header{
     margin-left: -60px;
 }
+
+/*Fixing the budgets */
+
+.sidebar a, a:hover{
+    text-decoration: none;
+}
+
+.budget-table{
+    border:1px solid #cbcbcb;
+    padding-left:1px;
+    margin-bottom:15px;
+    background-color: #fafafa;
+}
+
+.budget-table table{
+    width: 100%;
+    padding-left:10px;
+    margin-bottom:0px;
+    background-color: white;
+}
+
+.budget-table table > thead > tr{
+    background-color: #ececec;
+}
+
+.budget-table table > thead > tr th{
+    text-align: left;
+    vertical-align: middle;
+    font-size: 18px;
+    background-color: #000000 !important;
+    color: white;
+    border-color: #ececec;
+    border-bottom:1px solid #ececec;
+}
+
+.budget-table table > thead > tr th:nth-child(1),
+.budget-table table > thead > tr th:nth-child(2),
+.budget-table table > thead > tr th:nth-child(3),
+.budget-table table > thead > tr th:nth-child(4),
+.budget-table table > thead > tr th:nth-child(5){
+    text-align: center;
+    border-right:none;
+    border-left:none;
+    /*background-color: #000000 !important;*/
+}
+
+
+.budget-table table > tbody > tr{
+    margin-left: 5px;
+}
+
+.budget-table table > tbody > tr > td > h5{
+    color: #00aeff;
+}
+
+.budget-table table > tbody > tr > td > p{
+     margin: 0px;
+     font-weight: 500;
+     font-size: 12px;
+
+ }
+
+.budget-table table > tbody > tr > td:first-child{
+    width:600px ;
+    font-weight: 500;
+
+}
+
+
+.budget-table table > tbody > tr > td:nth-child(2){
+    border-left: none;
+    background: none;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px 20px;
+    font-weight:500;
+    font-size: 12px;
+}
+
+
+
+.budget-table table > tbody > tr > td:nth-child(3){
+
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px 20px;
+    font-weight:700;
+    font-size: 12px;
+}
+
+
+.budget-table table > tbody > tr > td:nth-child(3) > span{
+
+    font-weight:400;
+    font-size: 11px;
+}
+
+.budget-table table > tbody > tr > td:nth-child(4) {
+
+    text-align:center;
+    vertical-align: middle;
+    font-weight:500;
+    font-size: 12px;;
+}
+
+
+.budget-table table > tbody > tr > td:nth-child(5) {
+
+    padding:2px;
+    margin-left:20px;
+    margin-top:-5px;
+    padding-top:-10px;
+    padding-left: 10px;
+    margin-bottom: -5px;
+    padding-bottom: -10px;
+    text-align:center;
+    vertical-align: middle;
+    font-weight:500;
+    font-size: 12px;;
+}
+
+.total-thing{
+    border: 1px solid #cbcbcb;
+    background-color: #fafafa;
+    margin-top: -12px;
+}
+.details{
+    text-align: right;
+}
+
+.details p > span{
+    font-weight: bold;
+    font-size: 16px;
+    text-align: left;
+}
+.details p{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
