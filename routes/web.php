@@ -96,7 +96,19 @@ Route::group(['prefix' => '/users'], function (){
 });
 
 
+/**==================Budgets Routes================================*/
 
+Route::group(['prefix' => '/budgets'], function (){
+
+
+    Route::get('/',             'BudgetsController@index')->name('budget.index');
+    Route::get('/create',       'BudgetsController@create')->name('budget.create');
+    Route::post('/store',       'BudgetsController@store')->name('budget.store');
+    Route::get('/edit/{id}',    'BudgetsController@edit')->name('budget.edit');
+    Route::post('/update/{id}', 'BudgetsController@update')->name('budget.update');
+    Route::get('/delete/{id}',  'BudgetsController@delete')->name('budget.delete');
+
+});
 
 
 

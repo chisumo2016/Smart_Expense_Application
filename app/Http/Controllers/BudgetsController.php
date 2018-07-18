@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Period;
 use Illuminate\Http\Request;
 
 class BudgetsController extends Controller
@@ -10,6 +12,9 @@ class BudgetsController extends Controller
     public  function  __construct()
     {
         $this->middleware('auth');
+        $this->categories = new Category();
+        $this->periods = new Period();
+        $this->colors = \App\Providers\Common::colors();
     }
 
     //
@@ -20,6 +25,10 @@ class BudgetsController extends Controller
 
     public  function create()
     {
+       $data['categories']  =   $this->categories->whereUser();
+       $data['periods']     =   $this->periods->whereUser();
+
+       return view('budgets.create',$data);
 
     }
 
