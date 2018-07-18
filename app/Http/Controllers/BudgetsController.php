@@ -19,12 +19,28 @@ class BudgetsController extends Controller
         $this->categories = new Category();
         $this->periods = new Period();
         $this->colors = \App\Providers\Common::colors();
+        $this->budgets = new Budget();
     }
 
     //
     public function index()
     {
-         return view('budgets.index');
+        // Appy ACL
+        if(Auth::user()->role == 3)
+        {
+            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+        }
+
+        if(Auth::user()->company_id  == NULL )
+        {
+            return redirect()->route('company.index')->with('error', 'Please select / Create your company first');
+        }
+
+        $data['periods']        = $this->periods    ->whereUser();
+        $data['categories']     = $this->categories ->whereUser();
+        $data['colors']         = $this->colors;
+
+         return view('budgets.index', $data);
     }
 
     public  function create()

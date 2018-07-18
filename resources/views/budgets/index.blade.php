@@ -24,6 +24,11 @@
                     <div class="dropdown">
                         <select class="form-control">
                             <option value="all">Choose Budget Period</option>
+                            @if(count($periods) > 0)
+                                @foreach($periods as $row)
+                                    <option value="">{{ \App\Providers\Common::formatDate($row->from) }} to {{ \App\Providers\Common::formatDate($row->to) }}</option>
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                 </div>
@@ -36,12 +41,13 @@
                   <h2>Category</h2>
               </div>
 
+                <hr>
                 <div class="col-sm-10">
                     <div class="budget-table">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th class="tbl-heading">Budget</th>
+                                <th class="tbl-heading">Budget Item</th>
                                 <th class="tbl-heading">Unit</th>
                                 <th class="tbl-heading">Quantity</th>
                                 <th class="tbl-heading">Budget</th>
@@ -60,11 +66,23 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div><!-- end  budget-table class-->
+
+                    <div class="total-thing col-sm-12">
+                        <div class="title col-sm-5">
+                            <div class="details col-sm-5 pull-right">
+                                <p><span></span></p>
+                                <p><span></span></p>
+                                <p><span></span></p>
+                            </div>
+                        </div>
                     </div>
+
+                    <h4 align="center">No Item Found</h4>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div>  <!-- end row-->
+        </div>  <!-- end col -12-->
+    </div> <!-- end row-->
 
 
 
@@ -74,3 +92,5 @@
 {{--.row>.col-sm-12--}}
 {{--table.table.table-bordered>thead(tr>th*4)+tbody(tr>td*4)--}}
 {{--table.table.table-bordered>thead(tr>th*4.tbl-heading)+tbody(tr>td*4)--}}
+
+{{--.total-thing.col-sm-12>.title.col-sm-5>.details.col-sm-5.pull-right>p*3--}}
