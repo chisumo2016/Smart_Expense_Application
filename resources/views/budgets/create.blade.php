@@ -56,7 +56,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group {{ $errors->has('item')  ? 'has-error' : ''}}">
                 <label for="item" class="col-sm-2 form-control-label">Item</label>
                 <div class="col-sm-10">
 
