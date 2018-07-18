@@ -9,6 +9,7 @@ use App\Period;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Validation\Rules\In;
 
 class BudgetsController extends Controller
 {
@@ -35,6 +36,16 @@ class BudgetsController extends Controller
         {
             return redirect()->route('company.index')->with('error', 'Please select / Create your company first');
         }
+
+        //url to display all budgetsd
+
+        if (Input::get('department') == false ||  Input::get('period' == false))
+        {
+           return redirect('/budgets?department=all&period=all');
+        }
+
+        $data['period']        = Input::get('period');
+        $data['department']        = Input::get('department');
 
         $data['periods']        = $this->periods    ->whereUser();
         $data['categories']     = $this->categories ->whereUser();

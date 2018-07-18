@@ -40,7 +40,7 @@
               <div class="col-sm-2 sidebar">
                   @if(count($categories) > 0)
                    @foreach($categories as $category)
-                          <a href="" style="display: block">
+                          <a href="/budgets?department={{ $category->id }}"&period="{{ $period }}" style="display: block">
                               <div class="departs-group-budget">
                                   <p>{{ $category->name }}</p>
                                   <p>Exp total / Bdgt total</p>

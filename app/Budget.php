@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class Budget extends Model
 {
@@ -16,6 +17,20 @@ class Budget extends Model
     public  function  whereUser()
     {
         $company_id = Auth::user()->company_id;
+        //url
+        $department = "";
+        $period     =  "";
+        $AND        ="";
+
+        if(Input::get('department') && Input::get('department')!=="all")
+        {
+            $department = "AND b.category_id = ". Input::get('department'). "";
+        }
+
+        if(Input::get('period') && Input::get('period')!=="all")
+        {
+            $period = "AND b.period_id = ". Input::get('period'). "";
+        }
 
         return DB::select(DB::raw("
         
@@ -27,8 +42,14 @@ class Budget extends Model
            
             LEFT JOIN users as u ON b.user_id = u.id
             
+            LEFT JOIN categories as c ON b.category_id = c.id
+            
            
            WHERE b.company_id = $company_id
+           
+           $department
+           $period
+           $AND
            
            ORDER BY b.id DESC 
            
