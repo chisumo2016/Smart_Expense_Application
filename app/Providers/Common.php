@@ -39,4 +39,13 @@ class Common extends ServiceProvider
     {
         return date('F ,d, Y', strtotime($date));
     }
+
+    public  static  function  format_currency($value)
+    {
+        $value = number_format($value, 2);
+
+        $value ="£".$value;
+
+        return $value;
+    }
 }

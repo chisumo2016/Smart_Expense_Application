@@ -25,8 +25,8 @@ class Budget extends Model
           
            FROM budgets as b
            
-            --LEFT JOIN users as u ON b.user_id = u.id
-            --LEFT JOIN companies as co ON b.company_id = co.id
+            LEFT JOIN users as u ON b.user_id = u.id
+            
            
            WHERE b.company_id = $company_id
            

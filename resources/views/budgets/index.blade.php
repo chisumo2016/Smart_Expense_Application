@@ -54,31 +54,38 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @if(count($budgets) > 0)
+                            @foreach($budgets as $row)
                             <tr>
                                 <td class="request-budget">
-                                    <h5></h5>
-                                    <p></p>
-                                    <p></p>
+                                    <h5>{{ $row->item }}</h5>
+                                    <p> Created: <span>{{ date('d-M-Y',strtotime($row->created_at)) }}</span></p>
+                                    <p>{{ $row->name }}</p>
                                 </td>
-                                <td class="amount"></td>
-                                <td class="approvers"></td>
-                                <td class="details"></td>
+                                <td class="amount">{{  \App\Providers\Common::format_currency($row->unit) }}</td>
+                                <td class="approvers">{{ $row->quantity }}</td>
+                                <td class="details">{{  \App\Providers\Common::format_currency($row->budget) }}</td>
                             </tr>
+                             @endforeach
+                             @endif
                             </tbody>
                         </table>
                     </div><!-- end  budget-table class-->
 
+                    @if(count($budgets) > 0)
                     <div class="total-thing col-sm-12">
                         <div class="title col-sm-5">
                             <div class="details col-sm-5 pull-right">
-                                <p><span></span></p>
-                                <p><span></span></p>
-                                <p><span></span></p>
+                                <p>Total Budgets &nbsp;&nbsp;<span>Total Budgets</span></p>
+                                <p>Spend From  Budgets &nbsp;&nbsp;<span>Total Budgets</span></p>
+                                <p>Remaining  Budget &nbsp;&nbsp;<span>Remaining Budgets</span></p>
                             </div>
                         </div>
                     </div>
-
+                    @else
                     <h4 align="center">No Item Found</h4>
+
+                   @endif
                 </div>
             </div>  <!-- end row-->
         </div>  <!-- end col -12-->
