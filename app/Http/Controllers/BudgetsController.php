@@ -38,7 +38,10 @@ class BudgetsController extends Controller
 
         $data['periods']        = $this->periods    ->whereUser();
         $data['categories']     = $this->categories ->whereUser();
+        $data['budgets']        = $this->budgets    ->whereUser();
         $data['colors']         = $this->colors;
+
+        dd($data['budgets']);
 
          return view('budgets.index', $data);
     }
