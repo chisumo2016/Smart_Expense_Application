@@ -395,7 +395,17 @@ a.forgot-link:hover{color: #01c3ff;}
 }
 
 
+/*============Group Budget==========*/
 
+.departs-group-budget{
+    background-color: #fafafa;
+    text-align: center;
+    font-size: 100;
+    border: 1px solid #cbcbcb;
+    padding:10px 2px;
+    line-height: 0.5pc;
+    color: #000;
+}
 
 
 

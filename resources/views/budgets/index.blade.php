@@ -38,7 +38,17 @@
 
             <div class="row">
               <div class="col-sm-2 sidebar">
-                  <h2>Category</h2>
+                  @if(count($categories) > 0)
+                   @foreach($categories as $category)
+                          <a href="" style="display: block">
+                              <div class="departs-group-budget">
+                                  <p>{{ $category->name }}</p>
+                                  <p>Exp total / Bdgt total</p>
+                                  <p>spend</p>
+                              </div>
+                          </a>
+                    @endforeach
+                  @endif
               </div>
 
                 <hr>
@@ -101,3 +111,6 @@
 {{--table.table.table-bordered>thead(tr>th*4.tbl-heading)+tbody(tr>td*4)--}}
 
 {{--.total-thing.col-sm-12>.title.col-sm-5>.details.col-sm-5.pull-right>p*3--}}
+
+
+{{--a>div.departs-group-budget>p*3--}}
