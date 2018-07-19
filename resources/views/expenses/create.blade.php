@@ -139,4 +139,21 @@
 
 @endsection
 
+@section('script')
+
+    <!-- Initialize the editor. -->
+    <script>
+
+        $(function() { $('textarea').froalaEditor() });
+        
+    </script>
+
+@endsection
+
+
+
+
+
+
+
 {{--.row>.col-sm-8.col-sm-offset-2.form.form-horizontal--}}
