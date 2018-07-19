@@ -22,11 +22,11 @@
 
                 <div class="col-sm-4" style="margin-top: 22px;">
                     <div class="dropdown">
-                        <select class="form-control">
+                        <select class="form-control" onchange="change_period($(this).val())">
                             <option value="all">Choose Budget Period</option>
                             @if(count($periods) > 0)
                                 @foreach($periods as $row)
-                                    <option value="">{{ \App\Providers\Common::formatDate($row->from) }} to {{ \App\Providers\Common::formatDate($row->to) }}</option>
+                                    <option value="{{  $row->id }}">{{ \App\Providers\Common::formatDate($row->from) }} to {{ \App\Providers\Common::formatDate($row->to) }}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -40,7 +40,8 @@
               <div class="col-sm-2 sidebar">
                   @if(count($categories) > 0)
                    @foreach($categories as $category)
-                          <a href="/budgets?department={{ $category->id }}"&period="{{ $period }}" style="display: block">
+                       {{--url--}}
+                          <a href="/budgets?department={{ $category->id }}&period={{ $period }}" style="display: block">
                               <div class="departs-group-budget">
                                   <p>{{ $category->name }}</p>
                                   <p>Exp total / Bdgt total</p>
@@ -101,7 +102,16 @@
         </div>  <!-- end col -12-->
     </div> <!-- end row-->
 
+@endsection
 
+@section('script')
+    <script>
+        function change_period(id)
+        {
+            var url ='/budgets?department={{ $department }}&period='+id;  // coming from variable controller
+            window.location =   url;
+        }
+    </script>
 
 
 @endsection

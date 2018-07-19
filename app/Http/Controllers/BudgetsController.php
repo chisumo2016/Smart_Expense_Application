@@ -37,15 +37,16 @@ class BudgetsController extends Controller
             return redirect()->route('company.index')->with('error', 'Please select / Create your company first');
         }
 
-        //url to display all budgetsd
+        //url to display all budgets
 
         if (Input::get('department') == false ||  Input::get('period' == false))
         {
            return redirect('/budgets?department=all&period=all');
         }
 
-        $data['period']        = Input::get('period');
-        $data['department']        = Input::get('department');
+        $data['department']         = Input::get('department');
+        $data['period']              = Input::get('period');
+
 
         $data['periods']        = $this->periods    ->whereUser();
         $data['categories']     = $this->categories ->whereUser();
