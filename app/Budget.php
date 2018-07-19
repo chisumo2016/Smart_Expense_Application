@@ -18,9 +18,24 @@ class Budget extends Model
     {
         $company_id = Auth::user()->company_id;
         //url
-        $department = "";
+        $department =  "";
         $period     =  "";
-        $AND        ="";
+        $AND        =  "";
+
+        //Refining query  as per ACL
+        if(Auth::user()->role != 1)
+        {
+            $AND = "
+              AND c.id IN(
+              
+              SELECT ud.category_id
+              FROM user_details as ud 
+              WHERE ud.user_id  = ".Auth::user()->id."
+              
+              )
+            
+            ";
+        }
 
         if(Input::get('department') && Input::get('department')!=="all")
         {
