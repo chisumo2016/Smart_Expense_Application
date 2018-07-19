@@ -24,91 +24,122 @@ Route::get('/', function (){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home',             'HomeController@index')->name('home');
 
 //Auth get zone Route
-Route::post('/auth/get_zones', 'Auth\RegisterController@get_zones');
+Route::post('/auth/get_zones',  'Auth\RegisterController@get_zones');
 
 //Logout
-Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/logout',           'Auth\LoginController@logout')->name('logout');
 
 
-/**==================Company Routes================================*/
+/**======================Company Routes==========================================*/
 
 Route::group(['prefix' => '/companies'], function (){
 
-    Route::get('/', 'CompaniesController@index')->name('company.index');
-    Route::get('/create','CompaniesController@create')->name('company.create');
-    Route::post('/store','CompaniesController@store')->name('company.store');
-    Route::get('/active/{company}','CompaniesController@active')->name('company.active');
-    Route::get('/active/','CompaniesController@active')->name('company.active');
+    Route::get('/',                 'CompaniesController@index')->name('company.index');
+    Route::get('/create',           'CompaniesController@create')->name('company.create');
+    Route::post('/store',           'CompaniesController@store')->name('company.store');
+    Route::get('/active/{company}', 'CompaniesController@active')->name('company.active');
+    Route::get('/active/',          'CompaniesController@active')->name('company.active');
 
 });
 
 
-/**==================Categories-Periods  Route======================================================*/
+/**========================Categories-Periods  Route=================================*/
 
 Route::get('categories-period',       'CategoriesPeriodsController@index')->name('categories-periods.index');
 
 
-/**==================Categories Routes================================*=======================*/
+/**========================Categories Routes=======================================**/
 
 Route::group(['prefix' => '/categories'], function (){
 
 
-    Route::get('/create',       'CategoriesController@create')->name('category.create');
-    Route::post('/store', 'CategoriesController@store')->name('category.store');
-    Route::get('/edit/{id}',    'CategoriesController@edit')->name('category.edit');
-    Route::post('/update/{id}', 'CategoriesController@update')->name('category.update');
-    Route::get('/delete/{id}',  'CategoriesController@delete')->name('category.delete');
+    Route::get('/create',           'CategoriesController@create')->name('category.create');
+    Route::post('/store',           'CategoriesController@store')->name('category.store');
+    Route::get('/edit/{id}',        'CategoriesController@edit')->name('category.edit');
+    Route::post('/update/{id}',     'CategoriesController@update')->name('category.update');
+    Route::get('/delete/{id}',      'CategoriesController@delete')->name('category.delete');
 
 
 });
 
 
-/**==================Periods Routes================================*/
+/**=========================Periods Routes============================================*/
 
 Route::group(['prefix' => '/periods'], function (){
 
 
-    Route::get('/create',       'PeriodsController@create')->name('period.create');
-    Route::post('/store',       'PeriodsController@store')->name('period.store');
-    Route::get('/edit/{id}',    'PeriodsController@edit')->name('period.edit');
-    Route::post('/update/{id}', 'PeriodsController@update')->name('period.update');
-    Route::get('/delete/{id}',  'PeriodsController@delete')->name('period.delete');
+    Route::get('/create',           'PeriodsController@create')->name('period.create');
+    Route::post('/store',           'PeriodsController@store')->name('period.store');
+    Route::get('/edit/{id}',        'PeriodsController@edit')->name('period.edit');
+    Route::post('/update/{id}',     'PeriodsController@update')->name('period.update');
+    Route::get('/delete/{id}',      'PeriodsController@delete')->name('period.delete');
 
 
 });
 
 
-/**==================Users Routes================================*/
+/**==========================Users Routes================================*/
 
 Route::group(['prefix' => '/users'], function (){
 
 
-    Route::get('/',             'UsersController@index')->name('user.index');
-    Route::get('/create',       'UsersController@create')->name('user.create');
-    Route::post('/store',       'UsersController@store')->name('user.store');
-    Route::get('/edit/{id}',    'UsersController@edit')->name('user.edit');
-    Route::post('/update/{id}', 'UsersController@update')->name('user.update');
-    Route::get('/delete/{id}',  'UsersController@delete')->name('user.delete');
+    Route::get('/',                 'UsersController@index')->name('user.index');
+    Route::get('/create',           'UsersController@create')->name('user.create');
+    Route::post('/store',           'UsersController@store')->name('user.store');
+    Route::get('/edit/{id}',        'UsersController@edit')->name('user.edit');
+    Route::post('/update/{id}',     'UsersController@update')->name('user.update');
+    Route::get('/delete/{id}',      'UsersController@delete')->name('user.delete');
 
 });
 
 
-/**==================Budgets Routes================================*/
+/**==========================Budgets Routes================================*/
 
 Route::group(['prefix' => '/budgets'], function (){
 
 
-    Route::get('/',             'BudgetsController@index')->name('budget.index');
-    Route::get('/create',       'BudgetsController@create')->name('budget.create');
-    Route::post('/store',       'BudgetsController@store')->name('budget.store');
-    Route::get('/edit/{id}',    'BudgetsController@edit')->name('budget.edit');
-    Route::post('/update/{id}', 'BudgetsController@update')->name('budget.update');
-    Route::get('/delete/{id}',  'BudgetsController@delete')->name('budget.delete');
+    Route::get('/',                 'BudgetsController@index')->name('budget.index');
+    Route::get('/create',           'BudgetsController@create')->name('budget.create');
+    Route::post('/store',           'BudgetsController@store')->name('budget.store');
+    Route::get('/edit/{id}',        'BudgetsController@edit')->name('budget.edit');
+    Route::post('/update/{id}',     'BudgetsController@update')->name('budget.update');
+    Route::get('/delete/{id}',      'BudgetsController@delete')->name('budget.delete');
 
 });
+
+
+/**==============================Expenses Routes==================================*/
+
+Route::group(['prefix' => '/expenses'], function (){
+
+
+    Route::get('/',                 'ExpensesController@index')->name('expense.index');
+    Route::get('/create',           'ExpensesController@create')->name('expense.create');
+    Route::post('/store',           'ExpensesController@store')->name('expense.store');
+    Route::get('/edit/{id}',        'ExpensesController@edit')->name('expense.edit');
+    Route::post('/update/{id}',     'ExpensesController@update')->name('expense.update');
+    Route::get('/delete/{id}',      'ExpensesController@delete')->name('expense.delete');
+    Route::get('/show/{id}',        'ExpensesController@show')->name('expense.show');
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -189,7 +189,7 @@ a.forgot-link:hover{color: #01c3ff;}
 }
 
 .border-blue{
-    border-left: 5px solid  #56c7e9;
+    border-left:  5px solid  #56c7e9;
     border-right: 5px solid #56c7e9;
 }
 
@@ -204,17 +204,17 @@ a.forgot-link:hover{color: #01c3ff;}
 }
 
 .border-violet{
-    border-left: 5px solid #008080;
+    border-left:  5px solid #008080;
     border-right: 5px solid #008080;
 }
 
 .border-gray{
-    border-left: 5px solid #666666;
+    border-left: 5px solid  #666666;
     border-right: 5px solid #666666;
 }
 
 .border-brown{
-    border-left: 5px solid #4e302f;
+    border-left: 5px solid  #4e302f;
     border-right: 5px solid #4e302f;
 }
 
@@ -224,7 +224,7 @@ a.forgot-link:hover{color: #01c3ff;}
 /*}*/
 
 .border-purple{
-    border-left: 5px solid #3f5eba;
+    border-left: 5px solid  #3f5eba;
     border-right: 5px solid #3f5eba;
 }
 
@@ -234,7 +234,7 @@ a.forgot-link:hover{color: #01c3ff;}
 }
 
 .border-orange{
-    border-left: 5px solid #ff5300;
+    border-left: 5px solid  #ff5300;
     border-right: 5px solid #ff5300;
 }
 
