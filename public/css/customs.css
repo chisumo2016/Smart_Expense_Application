@@ -218,10 +218,10 @@ a.forgot-link:hover{color: #01c3ff;}
     border-right: 5px solid #4e302f;
 }
 
-.border-violet{
-    border-left: 5px solid #008080;
-    border-right: 5px solid #008080;
-}
+/*.border-violet{*/
+    /*border-left: 5px solid #008080;*/
+    /*border-right: 5px solid #008080;*/
+/*}*/
 
 .border-purple{
     border-left: 5px solid #3f5eba;
@@ -398,10 +398,10 @@ a.forgot-link:hover{color: #01c3ff;}
 /*============Group Budget==========*/
 
 .departs-group-budget{
-    background-color: #fafafa;
+    /*background-color: #fafafa;*/
     text-align: center;
     font-size: 100;
-    border: 1px solid #cbcbcb;
+    /*border: 1px solid #cbcbcb;*/
     padding:10px 2px;
     line-height: 0.5pc;
     color: #000;

@@ -42,22 +42,24 @@
                     <?php $i = 0;?> {{--color--}}
                    @foreach($categories as $category)
                             {{--color--}}
-                       <?php $class    = ($department  == $category->id ? "bg-{$colors[$i]}" : "{{border-{$colors[$i]}");
-                          $display  = ($department  == $category->id ? "display:none" : "display:block");
-                          $active   = ($department   == $category->id ? "true" : "false");
+                       <?php
 
+                          $class    = ($department  == $category->id ? "bg-{$colors[$i]}" : "border-{$colors[$i]}");
+                          $display  = ($department  == $category->id ? "display:none" : "display:block;");
+                          $active   = ($department   == $category->id ? "true" : "false");
 
                           ?>
                        {{--url--}}
                           <a href="/budgets?department={{ $category->id }}&period={{ $period }}" style="display: block">
-                              <div class="departs-group-budget {{ $class }}" datatype="{{ $active }}">
+                              <div class="departs-group-budget {{ $class }}" data-type="{{ $active }}">
                                   <p>{{ $category->name }}</p>
                                   <p style="{{ $display }}">Exp total / Bdgt total</p>
                                   <p style="{{ $display }}">spent</p>
                               </div>
                           </a>
 
-                       <?php if($i == count($colors)-1)  {$i =-1} $i++ ;?>
+                       <?php if($i == count($colors)-1)  {$i =-1;} $i++ ;?>
+
                     @endforeach
                   @endif
               </div>
