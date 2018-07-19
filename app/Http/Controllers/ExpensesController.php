@@ -51,9 +51,9 @@ class ExpensesController extends Controller
         return view ('expenses.create', $data);
     }
 
-    public  function  store()
+    public  function  store(Request $request)
     {
-
+        dd($request);
     }
 
     public  function  show()

@@ -50,7 +50,17 @@ class Budget extends Model
         return DB::select(DB::raw("
         
            SELECT
-           b.id , b.item, b.unit, b.company_id, b.category_id , b.period_id, b.quantity,b.budget,b.created_at,u.name as name
+           b.id , b.item, b.unit, b.company_id, b.category_id , b.period_id, b.quantity,b.budget,b.created_at,u.name as name,c.name as category,
+           b.budget as outside
+           
+           
+           /*CASE 
+            WHEN (b.budget -  SUM(e.price) > 0)
+            THEN b.budget  -   SUM(e.price)
+            
+            ELSE b.budget
+           
+           END AS  outside */
            
           
            FROM budgets as b
