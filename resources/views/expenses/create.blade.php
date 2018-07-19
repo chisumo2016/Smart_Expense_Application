@@ -45,7 +45,7 @@
                 <div class="form-group">
                     <label for="" class="col-sm-2 form-control-label">Priority</label>
                     <div class="col-sm-10">
-                        <select name="priority" id="priority"  required=""  class="form-control required " onchange="change_budget($(this.val()))">
+                        <select name="priority" id="priority"  required=""  class="form-control required " >  <!--onchange="change_budget($(this).val())"--->
                             <option value="">Choose Priority</option>
                             <option value="High">High</option>
                             <option value="Medium">Medium</option>
@@ -69,7 +69,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="price"  name="price" value="{{ old('price') }}">
 
-                        <p class="red" id="out_of_budget" style="display: none;">Sorry! Your price id out of the item budget.</p>
+                        <p class="red" id="out_of_budget" style="display: none;">Sorry! Your price is out of the item budget.</p>
 
                         @if($errors->has('price'))
                             <span class="help-block">
@@ -86,7 +86,7 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="subject"  name="subject" value="{{ old('subject') }}">
 
-                        <p class="red" id="out_of_budget" style="display: none;">Sorry! Your price id out of the item budget.</p>
+                        {{--<p class="red" id="out_of_budget" style="display: none;">Sorry! Your price id out of the item budget.</p>--}}
 
                         @if($errors->has('subject'))
                             <span class="help-block">
@@ -161,7 +161,39 @@
             $("#price").attr("max", budget);
             $("#outside").val(budget);
         }
+
+
+        {{--Jquery Function Change Budget & Setting Keyup Event--}}
+
+        $(document).ready(function () {
+
+            $("#price").keyup(function (e) {
+                var val     =   $("#budget_id").val();
+                val         =   val.split(':');
+                var budget  =   parseInt(val[1]);
+
+                var price   = $(this).val();
+                price = parseInt(price);
+
+                if (price > budget)
+                {
+                    $("#expenses").attr("onsubmit" , "return false"); //will not allow user to submit a form
+                    $("#price").addClass("red");
+                    $("#out_of_budget").show();
+                }else {
+                    $("#expenses").removeAttr("onsubmit");
+                    $("#price").removeClass("red");
+                    $("#out_of_budget").hide();
+                }
+            });
+        });
     </script>
+e
+
+
+
+
+
 @endsection
 
 

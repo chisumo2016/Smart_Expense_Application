@@ -408,9 +408,12 @@ a.forgot-link:hover{color: #01c3ff;}
 }
 
 
+/*============Group Expeses==========*/
 
-
-
+.red{
+    color: red;
+    font-weight: bolder;
+}
 
 
 
