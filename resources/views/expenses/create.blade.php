@@ -34,7 +34,7 @@
                             @if(count($budgets) > 0)
 
                                 @foreach($budgets as $row)
-                                    <option value="{{ $row->id. ':'. $row->outside }}">{{$row->category . ' : ' . $row->item }}</option>
+                                    <option value="{{ $row->id. ':'. $row->outside .':' . $row->category_id .' : ' .$row->period_id}}">{{$row->category . ' : ' . $row->item }}</option>
                                 @endforeach
                             @endif
 
