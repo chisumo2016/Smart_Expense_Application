@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label for="" class="col-sm-2 form-control-label">Budget Item</label>
                     <div class="col-sm-10">
-                        <select name="budget_id" id="budget_id"  required=""  class="form-control required " onchange="change_budget($(this.val()))">
+                        <select name="budget_id" id="budget_id"  required=""  class="form-control required" onchange="change_budget($(this).val())">
                             <option value="">Choose Budget Item</option>
 
                             @if(count($budgets) > 0)
@@ -46,7 +46,7 @@
                     <label for="" class="col-sm-2 form-control-label">Priority</label>
                     <div class="col-sm-10">
                         <select name="priority" id="priority"  required=""  class="form-control required " onchange="change_budget($(this.val()))">
-                            <option value="">Choose Budget Item</option>
+                            <option value="">Choose Priority</option>
                             <option value="High">High</option>
                             <option value="Medium">Medium</option>
                             <option value="">Low</option>
@@ -145,9 +145,23 @@
     <script>
 
         $(function() { $('textarea').froalaEditor() });
-        
+
     </script>
 
+
+    {{--Jquery Function Change Budget--}}
+
+    <script>
+        function change_budget(val)
+        {
+            val = val.split(':');
+            var budget =  parseInt(val[1]);
+
+            $("#price").attr("placeholder", "Budget Limit:"+budget);
+            $("#price").attr("max", budget);
+            $("#outside").val(budget);
+        }
+    </script>
 @endsection
 
 
