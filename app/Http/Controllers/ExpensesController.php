@@ -47,6 +47,7 @@ class ExpensesController extends Controller
     {
         $data['budgets']  = $this->budgets->whereUser();
         $data['periods']  = $this->periods->whereUser();
+
         return view ('expenses.create', $data);
     }
 

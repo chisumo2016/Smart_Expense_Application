@@ -14,11 +14,13 @@
 
                 <div class="col-sm-6">
                     <input type="text" class="form-control" name="name">
+
                     @if($errors->has('name'))
                         <span class="help-block">
                             <strong class="text-center">{{ $errors->first('name') }}</strong>
                          </span>
                     @endif
+
                 </div>
 
                 <div class="form-group">
