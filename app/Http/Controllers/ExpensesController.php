@@ -41,6 +41,7 @@ class ExpensesController extends Controller
             return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
         }
 
+        $data['expenses']   = $this->expenses->getAll(); dd($data['expenses']);
         $data['periods']    = $this->periods->whereUser();
         $data['categories'] = $this->categories->whereUser();
 
