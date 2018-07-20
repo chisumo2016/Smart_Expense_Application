@@ -67,12 +67,13 @@
 
 
             <div class="col-sm-10">
+
                 <div class="budget-table">
                     <table class="table table-bordered ">
                         <thead>
                         <tr>
                             <th class="tbl-heading"><input type="checkbox" class="checkAll" name="checkAll"></th>
-                            <th class="tbl-heading " style="text-align: left; margin-left: -5px;">Request</th>
+                            <th class="tbl-heading " style="text-align: left;">Request</th>
                             <th class="tbl-heading">£</th>
                             <th class="tbl-heading">Approvers</th>
                             <th class="tbl-heading">Details</th>
@@ -83,28 +84,37 @@
                             <form action="" method="post" role="form">
                             {{ csrf_field() }}
 
+                             @if(count($expenses) > 0)
+
+                             @foreach($expenses as $row)
+                             @if($row->company_id == Auth::user()->company_id)
+
                             <tr>
-                            <td style="width: 30px; border-right: none; vertical-align: middle;">
+                            <td class="budget-expense-td">
                             <input type="checkbox" name="expenses[]" value="">
                             </td>
                             <td style="width: 600px; text-align: left; ">
                             <h5>
                             <a href="">
-                            Subject of the expense
+                                {{ $row->subject }}             {{--Subject of the expense--}}
                             </a>
                             /
-                            <span>Budget Item (<span style="color: #142fba;">£5000 &nbsp; BL</span>)</span>
+                            <span>{{ $row->item }}{{--Budget Item--}} (<span style="color: #142fba;">{{\App\Providers\Common::format_currency($row->budget - $row->price)}} &nbsp; BL</span>)</span>
                             </h5>
 
-                            <p><span>User Name:</span>Created At :<span> 18 / 07 / 2018</span></p>
+                            <p>From : <span>{{ $row->user }}</span> Created At :<span> {{ date('d-M-Y', strtotime($row->created_at)) }}}</span></p>
                             <p><strong>Comment Box :</strong></p>
 
                             </td>
                             <td>
-                                <p>  £5000 </p>
+                                <p> {{\App\Providers\Common::format_currency($row->budget )}}  </p>
 
-                                    <a href="">
-                                        <span class="expense-overdue bg-">Status</span>
+                                    <a href="" style="text-decoration: none;">
+                                        <span class="expense-overdue bg-">
+
+                                           {{ $row->status }}
+
+                                        </span>
                                     </a>
 
                             </td>
@@ -113,30 +123,32 @@
                                 <p align="center"><img src="" alt="" width="25px"></p>
 
 
-                                <p>abc@email.com</p>
+                                <p>{{ $row->email }}</p>
 
 
                             </td>
                             <td>
                                 <div class="details-expenses">
-                                    <h5>Category</h5>
+                                    <h5>{{ $row->category }}</h5>
 
-                                    <p><span>£ &nbsp; 1000</span>&nbsp;requested</p>
+                                    <p><span>£ &nbsp; &nbsp; {{ $row->price }}</span>&nbsp;requested</p>
 
 
                                     <p>
-                                        <span style="color: #56ea48;">£60000&nbsp;left</span>
+                                        <span style="color: #56ea48;">{{\App\Providers\Common::format_currency($row->budget - $row->price)}}&nbsp;left</span>
                                     </p>
 
-                                    <p><strong>Priority: </strong>Low</p>
+                                    <p><strong>Priority: </strong>{{ $row->priority }}</p>
                                 </div>
 
 
                             </td>
                             </tr>
 
-                        </tr>
 
+                             @endif
+                             @endforeach
+                             @endif
 
                         </tbody>
                     </table>

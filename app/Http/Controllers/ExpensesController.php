@@ -29,7 +29,6 @@ class ExpensesController extends Controller
     public function index()
     {
 
-
         if(Auth::user()->company_id  == NULL )
         {
             return redirect()->route('company.index')->with('error', 'Please select / Create your company first');
@@ -41,7 +40,7 @@ class ExpensesController extends Controller
             return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
         }
 
-        $data['expenses']   = $this->expenses->getAll(); dd($data['expenses']);
+        $data['expenses']   = $this->expenses->getAll(); //dd($data['expenses']);
         $data['periods']    = $this->periods->whereUser();
         $data['categories'] = $this->categories->whereUser();
 

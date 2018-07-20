@@ -12,11 +12,12 @@ class Expense extends Model
     protected  $fillable =['user_id','company_id','budget_id','approver_id','priority','price','outside','subject',
         'description','file','status','comments'];
 
-
+//  Select/fetching the columns in Query Select
     public  function  getAll()
     {
         $table = DB::table('expenses as e');
 
+        //Select the field name in the database
         $table = $table->select(
             //Field required in expense table
 
@@ -25,7 +26,7 @@ class Expense extends Model
             'u.email','b.item','c.name as category','p.id as period', 'app.name as approver_name','app.logo as approver_logo'
         );
 
-        // Return the collection of array
+        // Join Query Table -----Return the collection of array
         $table = $table->leftJoin('companies    as      cmp',       'cmp.id' ,   '=' ,   'e.company_id');
         $table = $table->leftJoin('budgets      as      b',         'b.id' ,     '=' ,   'e.budget_id');
         $table = $table->leftJoin('categories   as      c',         'c.id' ,     '=' ,   'e.category_id');

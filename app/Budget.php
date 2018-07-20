@@ -29,8 +29,8 @@ class Budget extends Model
               AND c.id IN(
               
               SELECT ud.category_id
-              FROM user_details as ud 
-              WHERE ud.user_id  = ".Auth::user()->id."
+              FROM   user_details as ud 
+              WHERE  ud.user_id  = ".Auth::user()->id."
               
               )
             

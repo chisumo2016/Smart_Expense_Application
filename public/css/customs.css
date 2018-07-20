@@ -463,6 +463,12 @@ button{
     /*background-color: red;*/
 }
 
+.budget-expense-td{
+    width: 30px;
+    border-right: none;
+    vertical-align: middle;
+}
+
 
 
 
