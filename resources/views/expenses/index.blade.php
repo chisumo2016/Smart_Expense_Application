@@ -42,11 +42,11 @@
                 <div>
                     <nav>
                         <ul class="nav navbar-inverse sidebar-expense" >
-                            <li><a href="/expenses?department=1&status=all&period=&page=1">All Expenses</a></li>
-                            <li><a href="/expenses?department=1&status=Pending&period=&page=1">Pending</a></li>
-                            <li><a href="/expenses?department=1&status=Denied&period=&page=1">Denied</a></li>
-                            <li><a href="/expenses?department=1&status=Approved&period=&page=1">Approved</a></li>
-                            <li><a href="/expenses?department=1&status=Close&period=&page=1">Close</a></li>
+                            <li><a href="/expenses?department={{ $department }}&status=all&period={{ $period }}&page=1">All Expenses</a></li>
+                            <li><a href="/expenses?department={{ $department }}&status=Pending&period={{ $period }}&page=1">Pending</a></li>
+                            <li><a href="/expenses?department={{ $department }}&status=Denied&period={{ $period }}&page=1">Denied</a></li>
+                            <li><a href="/expenses?department={{ $department }}&status=Approved&period={{ $period }}&page=1">Approved</a></li>
+                            <li><a href="/expenses?department={{ $department }}&status=Close&period={{ $period }}&page=1">Closed</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -196,8 +196,79 @@
     </div> <!-- end col-sm-12 -->
 </div><!-- end row -->
 
+@endsection
+
+@section('script')
+{{--Creating URL by Javascript Function--}}
+<script>
+    function change_period(id)
+    {
+        var url = '/expenses?department={{ $department }}&status={{ $status }}&period='+id+'';
+        //Change location of the window
+        window.location = url;
+    }
+
+    function change_department(id)
+    {
+        var url = '/expenses?department='+id+'&status={{ $status }}&period={{ $period }}';
+        //Change location of the window
+         window.location = url;
+    }
+
+
+
+</script>
 
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 {{--.row>.col-sm-12--}}
 {{--.row>.col-sm-2.sidebar+.col-sm-10--}}
