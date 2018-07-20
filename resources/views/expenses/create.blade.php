@@ -19,7 +19,8 @@
 
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-            <form action="{{ route('expense.store') }}" class="form-horizontal" method="post" id="expenses" enctype="multipart/form-data">
+            <form action="{{ route('expense.store') }}" class="form-horizontal" method="POST" id="expenses" enctype="multipart/form-data">
+
                 {{ csrf_field() }}
                 <input type="hidden" value="{{ Auth::user()->company_id }}" name="company_id">
                 <input type="hidden" value="{{ old('outside') }}" name="outside" id="outside">
@@ -80,7 +81,7 @@
                 </div> <!--End group Price-->
 
 
-                <div class="form-group {{ $errors->has('subject')  ? 'has-error' : ''}}">
+                <div class="form-group {{ $errors->has('subject')  ? 'has-error' : ' '}}">
 
                     <label for="subject" class="col-sm-2 form-control-label">Subject</label>
                     <div class="col-sm-10">

@@ -25,10 +25,10 @@ class CreateExpenseRequest extends FormRequest
     {
         return [
             //
-            'budget_id '   => 'required',
-            'price '       => 'required|integer',
-            'subject '     => 'required',
-            'outside '     => 'required|integer',
+            'budget_id'   => 'required',
+            'price'       => 'required|integer',
+            'subject'     => 'required',
+            'outside'     => 'required|integer',
         ];
     }
 }

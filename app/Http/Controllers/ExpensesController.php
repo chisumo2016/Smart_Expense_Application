@@ -9,6 +9,7 @@ use App\Http\Requests\CreateExpenseRequest;
 use App\Period;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class ExpensesController extends Controller
 {
@@ -52,9 +53,38 @@ class ExpensesController extends Controller
         return view ('expenses.create', $data);
     }
 
-    public  function  store(CreateExpenseRequest  $request)
+    public  function  store(CreateExpenseRequest $request)
     {
-        dd($request);
+
+        $budget_id = explode(":", $request->budget_id);
+        $request->budget_id   = $budget_id[0];
+        $category_id          = $budget_id[2];
+        $period_id            = $budget_id[3];
+
+        $expense = new Expense($request->all());
+
+        $expense->category_id   = $category_id;
+        $expense->period_id     = $period_id;
+        $expense->user_id       =  Auth::user()->id;
+        $expense->company_id    =  Input::get('company_id');
+        $expense->outside       =  Input::get('outside');
+
+        //File
+
+        
+
+
+
+
+
+
+
+
+
+
+
+        dd($budget_id);
+
     }
 
     public  function  show()
