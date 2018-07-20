@@ -41,8 +41,11 @@ class ExpensesController extends Controller
             return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
         }
 
+        $data['periods']    = $this->periods->whereUser();
+        $data['categories'] = $this->categories->whereUser();
 
-       return view ('expenses.index');
+
+       return view ('expenses.index',$data);
     }
 
     public  function create()

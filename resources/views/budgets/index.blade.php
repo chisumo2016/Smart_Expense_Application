@@ -24,6 +24,7 @@
                     <div class="dropdown">
                         <select class="form-control" onchange="change_period($(this).val())">
                             <option value="all">Choose Budget Period</option>
+
                             @if(count($periods) > 0)
                                 @foreach($periods as $row)
                                     <option value="{{  $row->id }}">{{ \App\Providers\Common::formatDate($row->from) }} to {{ \App\Providers\Common::formatDate($row->to) }}</option>
