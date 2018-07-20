@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Budget;
 use App\Category;
 use App\Expense;
+use App\Http\Requests\CreateExpenseRequest;
 use App\Period;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +52,7 @@ class ExpensesController extends Controller
         return view ('expenses.create', $data);
     }
 
-    public  function  store(Request $request)
+    public  function  store(CreateExpenseRequest  $request)
     {
         dd($request);
     }

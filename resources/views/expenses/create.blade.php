@@ -154,7 +154,7 @@
     <script>
         function change_budget(val)
         {
-            val = val.split(':');
+            val = val.split(':');  // change into array
             var budget =  parseInt(val[1]);
 
             $("#price").attr("placeholder", "Budget Limit:"+budget);
@@ -188,12 +188,6 @@
             });
         });
     </script>
-e
-
-
-
-
-
 @endsection
 
 
