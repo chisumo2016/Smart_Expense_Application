@@ -67,8 +67,52 @@
 
 
             <div class="col-sm-10">
-                <h3>Table Content</h3>
+                <div class="budget-table">
+                    <table class="table table-bordered ">
+                        <thead>
+                        <tr>
+                            <th class="tbl-heading"><input type="checkbox" class="checkAll" name="checkAll"></th>
+                            <th class="tbl-heading " style="text-align: left; margin-left: -5px;">Request</th>
+                            <th class="tbl-heading">£</th>
+                            <th class="tbl-heading">Approvers</th>
+                            <th class="tbl-heading">Details</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <form action="" method="post" role="form">
+                            {{ csrf_field() }}
+
+                            <tr>
+                            <td style="width: 30px; border-right: none; vertical-align: middle;">
+                            <input type="checkbox" name="expenses[]" value="">
+                            </td>
+                            <td style="width: 600px; text-align: left; ">
+                            <h5>
+                            <a href="">
+                            Subject of the expense
+                            </a>
+                            /
+                            <span>Budget Item (<span style="color: #142fba;">£5000 &nbsp; BL</span>)</span>
+                            </h5>
+
+                            <p><span>User Name:</span>Created At :<span> 18 / 07 / 2018</span></p>
+                            <p><strong>Comment Box :</strong></p>
+
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            </tr>
+                            </form>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
+        
         </div><!-- end col-sm-10 -->
 
     </div> <!-- end col-sm-12 -->
@@ -81,4 +125,5 @@
 {{--.row>.col-sm-2.sidebar+.col-sm-10--}}
 {{--div>nav>ul.nav.navbar-inverse>li*5>a--}}
 {{--div>nav>ul.nav.navbar-inverse>li*5>a--}}
+{{--table.table.table-bordered>thead(tr>th.tbl-heading*5)+tbody(form>tr>td*5)--}}
 
