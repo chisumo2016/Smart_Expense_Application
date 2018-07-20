@@ -140,7 +140,14 @@
                         </tbody>
                     </table>
 
-                    </form>
+                    <div class="col-sm-8 status_trigger status_trigger-col-sm-8">
+                        <button class="btn btn-default pull-right btn-color" type="button"  onclick="closeexpenses()">Close</button>
+                        <button class="btn btn-danger pull-right " type="button"  onclick="denyexpenses()">Deny</button>
+                        <button class="btn btn-success pull-right " type="button"  onclick="approvalexpenses()">Approve</button>
+
+                    </div>
+
+                    </form><!-- end Form -->
                 </div>
             </div>
 
@@ -157,4 +164,5 @@
 {{--div>nav>ul.nav.navbar-inverse>li*5>a--}}
 {{--div>nav>ul.nav.navbar-inverse>li*5>a--}}
 {{--table.table.table-bordered>thead(tr>th.tbl-heading*5)+tbody(form>tr>td*5)--}}
+{{--.col-sm-8.status_trigger>button*3--}}
 

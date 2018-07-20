@@ -425,6 +425,16 @@ a.forgot-link:hover{color: #01c3ff;}
     text-align: left;
 }
 
+.status_trigger-col-sm-8{
+    margin-top: 25px;
+
+}
+.btn-color{
+    background-color: #000;
+    color: #fff;
+
+}
+
 
 
 
