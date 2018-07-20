@@ -415,6 +415,12 @@ a.forgot-link:hover{color: #01c3ff;}
     font-weight: bolder;
 }
 
+.sidebar-expense{
+    line-height:.1;
+    padding:10px;
+    margin-top:10px;
+}
+
 
 
 

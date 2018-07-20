@@ -39,8 +39,33 @@
 
         <div class="row">
             <div class="col-sm-2 sidebar">
-                <h2>Sidebar</h2>
+                <div>
+                    <nav>
+                        <ul class="nav navbar-inverse sidebar-expense" >
+                            <li><a href="/expenses?department=1&status=all&period=&page=1">All Expenses</a></li>
+                            <li><a href="/expenses?department=1&status=Pending&period=&page=1">Pending</a></li>
+                            <li><a href="/expenses?department=1&status=Denied&period=&page=1">Denied</a></li>
+                            <li><a href="/expenses?department=1&status=Approved&period=&page=1">Approved</a></li>
+                            <li><a href="/expenses?department=1&status=Close&period=&page=1">Close</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+                <div class="departments">
+                    <select name="" id="" class="form-control" data-placeholder="departments" onchange="change_department($(this).val())">
+                        <option value="all">All Department</option>
+
+                        @if(count($categories) > 0)
+                            @foreach($categories as $row)
+                                <option value="{{  $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        @endif
+                    </select>
+                </div>
             </div><!-- end sidebar -->
+
+
             <div class="col-sm-10">
                 <h3>Table Content</h3>
             </div>
@@ -54,4 +79,6 @@
 
 {{--.row>.col-sm-12--}}
 {{--.row>.col-sm-2.sidebar+.col-sm-10--}}
+{{--div>nav>ul.nav.navbar-inverse>li*5>a--}}
+{{--div>nav>ul.nav.navbar-inverse>li*5>a--}}
 
