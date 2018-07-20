@@ -3,7 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class Expense extends Model
 {
@@ -15,6 +17,14 @@ class Expense extends Model
 //  Select/fetching the columns in Query Select
     public  function  getAll()
     {
+        // Creating Filters in Query
+        $company_id = Auth::user()->company_id;
+        $department = Input::get('department');
+        $status = Input::get('status');
+        $period = Input::get('period');
+
+
+
         $table = DB::table('expenses as e');
 
         //Select the field name in the database
@@ -34,6 +44,28 @@ class Expense extends Model
         $table = $table->leftJoin('users        as      app',       'app.id',    '=' ,   'e.approver_id');
         $table = $table->leftJoin('periods      as       p',        'p.id' ,     '=' ,   'e.period_id');
 
+        //Creating filter in Query
+        $table = $table->where('e.company_id', '=' ,$company_id );
+        if ($department &&  $department != 'all')
+        {
+            $table = $table ->where('b.category_id', $department);
+        }
+
+
+        if ($period &&  $period != 'all')
+        {
+            $table = $table ->where('b.period_id', $period);
+        }
+
+        if ($status &&  $status != 'all')
+        {
+            $table = $table ->where('e.status', $period);
+        }
+
+
+
+
+        $table= $table->orderBy('created_at', 'DESC');
         //Fetching
 
         $table = $table->get();
