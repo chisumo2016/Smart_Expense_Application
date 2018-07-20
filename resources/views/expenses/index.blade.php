@@ -100,19 +100,50 @@
                             <p><strong>Comment Box :</strong></p>
 
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>
+                                <p>  £5000 </p>
+
+                                    <a href="">
+                                        <span class="expense-overdue bg-">Status</span>
+                                    </a>
+
+                            </td>
+                            <td>
+                                <p align="center"><img src="" alt="" width="25px"></p>
+                                <p align="center"><img src="" alt="" width="25px"></p>
+
+
+                                <p>abc@email.com</p>
+
+
+                            </td>
+                            <td>
+                                <div class="details-expense">
+                                    <h5>Category</h5>
+                                    <p><span>£ &nbsp; 1000</span>&nbsp;requested</p>
+
+
+                                    <p>
+                                        <span style="color: #56ea48;">£60000&nbsp;left</span>
+                                    </p>
+
+                                    <p><strong>Priority: </strong>Low</p>
+                                </div>
+
+
+                            </td>
                             </tr>
-                            </form>
+
                         </tr>
 
 
                         </tbody>
                     </table>
+
+                    </form>
                 </div>
             </div>
-        
+
         </div><!-- end col-sm-10 -->
 
     </div> <!-- end col-sm-12 -->
