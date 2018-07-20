@@ -35,14 +35,29 @@ class ExpensesController extends Controller
         }
 
         // Appy ACL
-        if(Auth::user()->role == 3)
+//        if(Auth::user()->role == 3)
+//        {
+//            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+//        }
+
+        //URL
+
+        if(Input::get('department' == false) || Input::get('status') == false || Input::get('period')== false)
         {
-            return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
+            //set ur
+            return redirect('/expenses?department=all&status=all&period=all ');
         }
 
-        $data['expenses']   = $this->expenses->getAll(); //dd($data['expenses']);
-        $data['periods']    = $this->periods->whereUser();
-        $data['categories'] = $this->categories->whereUser();
+        //URL
+        $data['status']         = Input::get('status');
+        $data['department']     = Input::get('department');
+        $data['period']         = Input::get('period');
+        $data['page']           = Input::get('page');
+//        $data['expenses']       = $data['expenses']->appends(Input::except('page'));
+
+        $data['expenses']       = $this->expenses->getAll(); //dd($data['expenses']);
+        $data['periods']        = $this->periods->whereUser();
+        $data['categories']     = $this->categories->whereUser();
 
 
        return view ('expenses.index',$data);
