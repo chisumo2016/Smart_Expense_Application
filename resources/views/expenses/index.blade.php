@@ -95,7 +95,7 @@
                             </td>
                             <td style="width: 600px; text-align: left; ">
                             <h5>
-                            <a href="">
+                            <a href="{{ route('expense.show',$row->id) }}">
                                 {{ $row->subject }}             {{--Subject of the expense--}}
                             </a>
                             /
@@ -119,11 +119,23 @@
 
                             </td>
                             <td>
-                                <p align="center"><img src="" alt="" width="25px"></p>
-                                <p align="center"><img src="" alt="" width="25px"></p>
+                                {{--logic approver--}}
 
 
+                                @if($row->approver == ""  &&  $row->status == "Pending")
+
+                                    <p>Not Approved Yet</p>
+                                @elseif($row->approver != "" && $row->logo != "")
+
+                                <p align="center"><img src="{{asset('images/'.$row->logo) }}" alt="" width="25px"></p>
                                 <p>{{ $row->email }}</p>
+
+                                @elseif($row->approver != "" && $row->logo == "")
+                                    <p>{{ $row->email }}</p>
+
+                                @endif
+
+
 
 
                             </td>
@@ -131,7 +143,7 @@
                                 <div class="details-expenses">
                                     <h5>{{ $row->category }}</h5>
 
-                                    <p><span>£ &nbsp; &nbsp; {{ $row->price }}</span>&nbsp;requested</p>
+                                    <p><span>£&nbsp;{{ $row->price }}</span>&nbsp;requested</p>
 
 
                                     <p>
@@ -178,4 +190,20 @@
 {{--div>nav>ul.nav.navbar-inverse>li*5>a--}}
 {{--table.table.table-bordered>thead(tr>th.tbl-heading*5)+tbody(form>tr>td*5)--}}
 {{--.col-sm-8.status_trigger>button*3--}}
+
+
+
+{{--@if($row->approver == ""  &&  $row->status == "Pending")--}}
+
+    {{--<p>Not Approved Yet</p>--}}
+    {{--@if(!$row->approver =   "")--}}
+        {{--@if($row->logo == "")--}}
+            {{--<p></p>--}}
+        {{--@else--}}
+            {{--<p align="center"><img src="{{asset('images/$row->logo') }}" alt="" width="25px"></p>--}}
+
+            {{--<p>{{ $row->email }}</p>--}}
+        {{--@endif--}}
+    {{--@endif--}}
+{{--@endif--}}
 
