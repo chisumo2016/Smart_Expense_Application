@@ -89,7 +89,20 @@
                              @foreach($expenses as $row)
                              @if($row->company_id == Auth::user()->company_id)
 
-                            <tr>
+                                 {{--Colors--}}
+                            <?php
+                               $color = "purple" ;
+
+                               if($row->status == "Pending"){$color  = "yellow";}
+                               if($row->status == "Approved"){$color  = "green";}
+                               if($row->status == "Denied"){$color    = "red";}
+                               if($row->status == "Closed"){$color    = "black";}
+
+                            ?>
+
+
+
+                            <tr class="border-{{ $color }}">
                             <td class="budget-expense-td">
                             <input type="checkbox" name="expenses[]" value="">
                             </td>
@@ -110,7 +123,7 @@
                                 <p> {{\App\Providers\Common::format_currency($row->budget )}}  </p>
 
                                     <a href="" style="text-decoration: none;">
-                                        <span class="expense-overdue bg-">
+                                        <span class="expense-overdue bg-{{ $color }}">
 
                                            {{ $row->status }}
 
@@ -128,9 +141,11 @@
                                 @elseif($row->approver != "" && $row->logo != "")
 
                                 <p align="center"><img src="{{asset('images/'.$row->logo) }}" alt="" width="25px"></p>
+                                <p>{{ $row->user }}</p>
                                 <p>{{ $row->email }}</p>
 
                                 @elseif($row->approver != "" && $row->logo == "")
+                                    <p>{{ $row->user }}</p>
                                     <p>{{ $row->email }}</p>
 
                                 @endif

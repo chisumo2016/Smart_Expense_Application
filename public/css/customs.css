@@ -105,7 +105,7 @@ a.forgot-link:hover{color: #01c3ff;}
 .bg-yellow{
     background-color: #e8b40b;
     color: #fafafa;
-    font-size: 150px;
+    font-size: 15px;
     font-style: italic;
     font-weight:bolder;
 }
@@ -436,6 +436,13 @@ a.forgot-link:hover{color: #01c3ff;}
 }
 button{
     margin-left:10px;
+}
+
+
+budget-expense-td{
+    width:30px;
+    border-right: none;
+    vertical-align: middle;
 }
 
 .details-expenses{
