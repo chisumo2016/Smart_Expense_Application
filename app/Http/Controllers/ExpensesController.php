@@ -57,7 +57,8 @@ class ExpensesController extends Controller
     {
 
         $budget_id = explode(":", $request->budget_id);
-        $request->budget_id   = $budget_id[0];
+        //$request->budget_id   = $budget_id[0];
+        $budgetID            = $budget_id[0];
         $category_id          = $budget_id[2];
         $period_id            = $budget_id[3];
 
@@ -65,13 +66,30 @@ class ExpensesController extends Controller
 
         $expense->category_id   = $category_id;
         $expense->period_id     = $period_id;
+        $expense->budget_id     = $budgetID ;
         $expense->user_id       =  Auth::user()->id;
         $expense->company_id    =  Input::get('company_id');
         $expense->outside       =  Input::get('outside');
 
-        //File
+        //File validation  2
+        if($request->file('file') && $request->file('file')->isValid())
+        {
+            //Define the path  1
+            $destinationPath    = './uploads';
+            $filename           =  time().'.'.$request->file('file')->getClientOriginalExtension();
+            //Move a file to specified des
+            $request->file('file')->move( $destinationPath, $filename);
+            //Store a file in database
+            $expense->file   =   $filename;
 
-        
+        }
+
+        //Save
+        $expense->save();
+
+        return redirect()->back()->with('message', 'New Record  Inserted');
+
+
 
 
 
