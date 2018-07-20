@@ -434,6 +434,38 @@ a.forgot-link:hover{color: #01c3ff;}
     color: #fff;
 
 }
+button{
+    margin-left:10px;
+}
+
+.details-expenses{
+    text-align: left;
+}
+
+.details-expenses h5{
+    color: #0d30e0;
+    font-weight:700;
+    font-size: 15px;
+}
+
+.details-expenses p{
+    line-height: 4px;
+}
+
+.details-expense p > span{
+    font-weight: bolder;
+}
+
+.expense-overdue{
+    border-radius: 50px;
+    color: #FFFFFF;
+    padding:1px 8px;
+    /*background-color: red;*/
+}
+
+
+
+
 
 
 

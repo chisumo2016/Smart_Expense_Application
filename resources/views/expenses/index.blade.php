@@ -118,8 +118,9 @@
 
                             </td>
                             <td>
-                                <div class="details-expense">
+                                <div class="details-expenses">
                                     <h5>Category</h5>
+
                                     <p><span>£ &nbsp; 1000</span>&nbsp;requested</p>
 
 
