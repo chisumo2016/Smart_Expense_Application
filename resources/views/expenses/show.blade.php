@@ -36,6 +36,39 @@
                     <th>From: </th>
                     <td>{{ $row->user }}</td>
                 </tr>
+
+                <tr>
+                    {{--Colors--}}
+                    <?php
+                    $color = "purple" ;
+
+                    if($row->status == "Pending")   {$color  =  "yellow";}
+                    if($row->status == "Approved")  {$color  = "green";}
+                    if($row->status == "Denied")    {$color  = "red";}
+                    if($row->status == "Closed")    {$color  = "black";}
+
+                    ?>
+                    <!-- Creating Button and Dropdown  -->
+                    <th>Status: </th>
+                    <td>
+                        <span class="expens-e-overdue bg-{{ $color }}" style="float:left;">{{ $row->status }} </span>
+                        <div  style="float:right; margin-top: 3px;">
+
+                            <select name="" id="expense_status_{{ $row->id }}" style="float: left; margin-top: 5px; margin-right: 10px;">
+
+                                <option <?php if($row->status == "Approved"){echo  'selected="selected"';};?>value="Approved">Approved</option>
+                                <option <?php if($row->status == "Pending"){echo  'selected="selected"';};?>value="Pending">Pending</option>
+                                <option <?php if($row->status == "Denied"){echo  'selected="selected"';};?>value="Denied">Denied</option>
+                                <option <?php if($row->status == "Closed"){echo  'selected="selected"';};?>value="Closed">Closed</option>
+                                <option <?php if($row->status == "Denied"){echo  'selected="selected"';};?>value="Denied">Denied</option>
+                                <option <?php if($row->status == "Overdue"){echo  'selected="selected"';};?>value="Overdue">Overdue</option>
+
+                            </select>
+
+                            <button type="button" class="btn btn-success" onclick="changestatussingle{{ $row->id }}" style="width: auto; padding: 3px 8px;">Update Status</button>
+                        </div>
+                    </td>
+                </tr>
                 <tr>
                     <th>Budget: </th>
                     <td>{{ $row->budget }}</td>
@@ -102,14 +135,21 @@
                     </td>
                 </tr>
 
-                @if($row->comments != '')
+                <tr id="comments_single_tr_td" style="display: none;">
+                    <th>Comments: <span style="color: red;">Required</span></th>
+                    <td>
+                        <textarea name="" id="comment_single_{{ $row->id }}" style="width: 100%;">{{ $row->comments }}</textarea>
+                    </td>
+                </tr>
 
+                @if($row->comments != '')
                     <tr>
                         <th>Comments : </th>
                         <td>
                            {{ $row->comments }}
                         </td>
                     </tr>
+
                     @else
                     <th>Comments : </th>
                     <td><p>NA</p></td>
