@@ -108,24 +108,16 @@ class ExpensesController extends Controller
         return redirect()->back()->with('message', 'New Record  Inserted');
 
 
-
-
-
-
-
-
-
-
-
-
-
-        dd($budget_id);
+        //dd($budget_id);
 
     }
 
-    public  function  show()
+    public  function  show($id)
     {
-        return view ('expenses.show');
+        $expenses = $this->expenses->getAll($id);  // dd($expenses);
+        $data['row']  =  $expenses[0];  //dd($data['row'] );
+
+        return view ('expenses.show', $data);
     }
 
 

@@ -15,7 +15,7 @@ class Expense extends Model
         'description','file','status','comments'];
 
 //  Select/fetching the columns in Query Select
-    public  function  getAll()
+    public  function  getAll($id = NULL)
     {
         // Creating Filters in Query
         $company_id = Auth::user()->company_id;
@@ -44,7 +44,12 @@ class Expense extends Model
         $table = $table->leftJoin('users        as      app',       'app.id',    '=' ,   'e.approver_id');
         $table = $table->leftJoin('periods      as       p',        'p.id' ,     '=' ,   'e.period_id');
 
-        //Creating filter in Query
+
+        //sTTING QUERY  SHOW AS SINGLE EXPENSE
+
+        if ($id == NULL)
+        {
+            //Creating filter in Query
         $table = $table->where('e.company_id', '=' ,$company_id );
 
         // Appplying ACL
@@ -79,6 +84,49 @@ class Expense extends Model
 
 
         return  $table;
+
+        }else{
+
+            //ID  is given get record
+            $table = $table->where('e.id',$id);
+            return $table->get();
+
+        }
+//        //Creating filter in Query
+//        $table = $table->where('e.company_id', '=' ,$company_id );
+//
+//        // Appplying ACL
+//        if (Auth::user()->role !=1 )
+//        {
+//            $table = $table->whereIn('e.category_id', $this->user_details());
+//        }
+//
+//        if ($department &&  $department != 'all')
+//        {
+//            $table = $table ->where('b.category_id', $department);
+//        }
+//
+//
+//        if ($period &&  $period != 'all')
+//        {
+//            $table = $table ->where('b.period_id', $period);
+//        }
+//
+//        if ($status &&  $status != 'all')
+//        {
+//            $table = $table ->where('e.status', $period);
+//        }
+//
+//
+//
+//
+//        $table= $table->orderBy('created_at', 'DESC');
+//        //Fetching
+//
+//        $table = $table->get();
+//
+//
+//        return  $table;
     }
 
     public function user_details()
