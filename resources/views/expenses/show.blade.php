@@ -146,7 +146,7 @@
                     <tr>
                         <th>Comments : </th>
                         <td>
-                           {{ $row->comments }}
+                           {!! $row->comments  !!}
                         </td>
                     </tr>
 
@@ -158,6 +158,28 @@
             </table>
         </div>
     </div>
+
+@endsection
+
+@section('script')
+    <script>
+        {{--Function  to update  a single expense --}}
+        function changestatussingle(expense_id)
+        {
+          var commentbox = $("#comment_single_"+expense_id).val();
+          var newstatus = $("#expense_status_"+expense_id).val();
+
+          if (newstatus == 'Denied')
+          {
+
+          }else {
+              $.post("/expenses/updatestatus", {status:newstatus, comments:commentbox,id:expense_id, _token:'{!! csrf_token() !!}'}).done(function (data) {
+                  //Request Succcessful
+                  location.reload();
+              }); //url wweb
+          }
+        }
+    </script>
 
 @endsection
 
