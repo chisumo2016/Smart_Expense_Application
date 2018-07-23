@@ -28,7 +28,7 @@
 
                         @if(count($periods) > 0)
                             @foreach($periods as $row)
-                                <option value="{{  $row->id }}">{{ \App\Providers\Common::formatDate($row->from) }} to {{ \App\Providers\Common::formatDate($row->to) }}</option>
+                                <option value="{{  $row->id }}"<?php if($period == $row->id){ echo 'selected = "selected"';} ?> >{{ \App\Providers\Common::formatDate($row->from) }} to {{ \App\Providers\Common::formatDate($row->to) }}</option>
                             @endforeach
                         @endif
 
@@ -41,12 +41,13 @@
             <div class="col-sm-2 sidebar">
                 <div>
                     <nav>
+                    <!--  {{--<?php if ($status == "all")     {echo 'class="active"';}?> Seeting Background active--}}-->
                         <ul class="nav navbar-inverse sidebar-expense" >
-                            <li><a href="/expenses?department={{ $department }}&status=all&period={{ $period }}&page=1">All Expenses</a></li>
-                            <li><a href="/expenses?department={{ $department }}&status=Pending&period={{ $period }}&page=1">Pending</a></li>
-                            <li><a href="/expenses?department={{ $department }}&status=Denied&period={{ $period }}&page=1">Denied</a></li>
-                            <li><a href="/expenses?department={{ $department }}&status=Approved&period={{ $period }}&page=1">Approved</a></li>
-                            <li><a href="/expenses?department={{ $department }}&status=Close&period={{ $period }}&page=1">Closed</a></li>
+                            <li <?php if ($status == "all")     {echo 'class="active"';}?>><a href="/expenses?department={{ $department }}&status=all&period={{ $period }}&page=1"      <?php if ($status == "all"){echo 'class="bg-blue"';}?>>All Expenses</a></li>
+                            <li <?php if ($status == "Pending") {echo 'class="active"';}?>><a href="/expenses?department={{ $department }}&status=Pending&period={{ $period }}&page=1"<?php if ($status   == "Pending"){echo 'class="bg-blue"';}?>>Pending</a></li>
+                            <li <?php if ($status == "Denied")  {echo 'class="active"';}?>><a href="/expenses?department={{ $department }}&status=Denied&period={{ $period }}&page=1"<?php if ($status    == "Denied"){echo 'class="bg-blue"';}?>>Denied</a></li>
+                            <li <?php if ($status == "Approved") {echo 'class="active"';}?>><a href="/expenses?department={{ $department }}&status=Approved&period={{ $period }}&page=1 <?php if ($status == "Approved"){echo 'class="bg-blue"';}?>">Approved</a></li>
+                            <li <?php if ($status == "Closed")  {echo 'class="active"';}?>><a href="/expenses?department={{ $department }}&status=Close&period={{ $period }}&page=1" <?php if ($status == "Closed"){echo 'class="bg-blue"';}?>>Closed</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -58,7 +59,8 @@
 
                         @if(count($categories) > 0)
                             @foreach($categories as $row)
-                                <option value="{{  $row->id }}">{{ $row->name }}</option>
+                                {{--settin Background selected <?php if($period == $row->id){ echo 'selected = "selected"';} ?>--}}
+                                <option value="{{  $row->id }}" <?php if($department == $row->id){ echo 'selected = "selected"';} ?>>{{ $row->name }}</option>
                             @endforeach
                         @endif
                     </select>
