@@ -151,10 +151,6 @@
                                     <p>{{ $row->email }}</p>
 
                                 @endif
-
-
-
-
                             </td>
                             <td>
                                 <div class="details-expenses">

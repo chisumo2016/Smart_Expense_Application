@@ -32,7 +32,7 @@ class Expense extends Model
             //Field required in expense table
 
             'e.id', 'e.price','e.outside as budget','e.priority','e.status','e.subject', 'e.description','e.comments',
-            'e.approver_id as approver', 'e.company_id', 'e.created_at','e.updated_at','u.name as user', 'u.logo as logo',
+            'e.approver_id as approver', 'e.company_id', 'e.created_at','e.updated_at','e.file','u.name as user', 'u.logo as logo',
             'u.email','b.item','c.name as category','p.id as period', 'app.name as approver_name','app.logo as approver_logo'
         );
 
