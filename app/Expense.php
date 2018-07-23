@@ -46,6 +46,13 @@ class Expense extends Model
 
         //Creating filter in Query
         $table = $table->where('e.company_id', '=' ,$company_id );
+
+        // Appplying ACL
+        if (Auth::user()->role !=1 )
+        {
+            $table = $table->whereIn('e.category_id', $this->user_details());
+        }
+
         if ($department &&  $department != 'all')
         {
             $table = $table ->where('b.category_id', $department);
@@ -73,4 +80,44 @@ class Expense extends Model
 
         return  $table;
     }
+
+    public function user_details()
+    {
+        $company_id  = Auth::user()->company_id;
+        $user_id     = Auth::user()->id;
+
+        $table  =   DB::table('user_details');
+        $table  =   $table->select('category_id'); // from user_details
+        $table  =   $table->where('company_id', $company_id);
+        $table  =   $table->where('user_id', $user_id);
+
+        $result = $table->get();
+
+        //Empty array -inject user_details
+        $array =[];
+        if (count($result) > 0) :
+            foreach ($result as $row) :
+                //store into array
+                $array[] = $row->category_id;
+
+            endforeach;
+
+        endif;
+             //Return the array
+
+         return $array;
+
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
