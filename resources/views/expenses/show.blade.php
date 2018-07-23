@@ -171,7 +171,18 @@
 
           if (newstatus == 'Denied')
           {
-
+           //sending ajax request yo update of single
+              if (commentbox == '')
+              {
+                  $("#comments_single_tr_td").slideDown('slow')
+              }else {
+                  commentbox = $("#comment_single"+expense_id).val();
+                  //send to database
+                  $.post("/expenses/updatestatus", {status:newstatus, comments:commentbox,id:expense_id, _token:'{!! csrf_token() !!}'}).done(function (data) {
+                      //Request Succcessful
+                      location.reload();
+                  });
+              }
           }else {
               $.post("/expenses/updatestatus", {status:newstatus, comments:commentbox,id:expense_id, _token:'{!! csrf_token() !!}'}).done(function (data) {
                   //Request Succcessful
