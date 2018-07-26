@@ -128,7 +128,21 @@ class ExpensesController extends Controller
 
     public function updatestatus(Request $request)
     {
-        dd($request);
+
+        //dd($request);
+
+        $id         = $_POST['id'];
+        $status     = $_POST['status'];
+        $comments   = $_POST['comments'];
+
+        $expense    = Expense::find($id);
+        $expense->status        = $status;
+        $expense->comments      = $comments;
+        $expense->approver_id   = Auth::user()->id;
+
+        $expense->save();
+
+
     }
 
     public function  update()

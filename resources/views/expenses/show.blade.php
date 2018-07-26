@@ -56,16 +56,16 @@
 
                             <select name="" id="expense_status_{{ $row->id }}" style="float: left; margin-top: 5px; margin-right: 10px;">
 
-                                <option <?php if($row->status == "Approved"){echo  'selected="selected"';};?>value="Approved">Approved</option>
-                                <option <?php if($row->status == "Pending"){echo  'selected="selected"';};?>value="Pending">Pending</option>
-                                <option <?php if($row->status == "Denied"){echo  'selected="selected"';};?>value="Denied">Denied</option>
-                                <option <?php if($row->status == "Closed"){echo  'selected="selected"';};?>value="Closed">Closed</option>
-                                <option <?php if($row->status == "Denied"){echo  'selected="selected"';};?>value="Denied">Denied</option>
-                                <option <?php if($row->status == "Overdue"){echo  'selected="selected"';};?>value="Overdue">Overdue</option>
+                                <option <?php if($row->status == 'Approved'){echo   'selected="selected"';}?>   value="Approved">Approved</option>
+                                <option <?php if($row->status == 'Pending'){echo    'selected="selected"';}?>   value="Pending">Pending</option>
+                                <option <?php if($row->status == 'Denied'){echo     'selected="selected"';}?>   value="Denied">Denied</option>
+                                <option <?php if($row->status == 'Closed'){echo     'selected="selected"';}?>   value="Closed">Closed</option>
+
+                                <option <?php if($row->status == 'Overdue'){echo    'selected="selected"';}?>   value="Overdue">Overdue</option>
 
                             </select>
 
-                            <button type="button" class="btn btn-success" onclick="changestatussingle{{ $row->id }}" style="width: auto; padding: 3px 8px;">Update Status</button>
+                            <button type="button" class="btn btn-success" onclick="changestatussingle({{ $row->id }})" style="width: auto; padding: 3px 8px;">Update Status</button>
                         </div>
                     </td>
                 </tr>
@@ -166,28 +166,31 @@
         {{--Function  to update  a single expense --}}
         function changestatussingle(expense_id)
         {
-          var commentbox = $("#comment_single_"+expense_id).val();
-          var newstatus = $("#expense_status_"+expense_id).val();
+          var commentbox =  $("#comment_single_"+expense_id).val();
+          var newstatus =   $("#expense_status_"+expense_id).val();
 
-          if (newstatus == 'Denied')
+          if (newstatus == 'Denied' )
           {
            //sending ajax request yo update of single
               if (commentbox == '')
               {
+                  //Show the comments box
                   $("#comments_single_tr_td").slideDown('slow')
               }else {
-                  commentbox = $("#comment_single"+expense_id).val();
+                  //Comment box is not empty
+                  commentbox = $("#comment_single_"+expense_id).val();
                   //send to database
-                  $.post("/expenses/updatestatus", {status:newstatus, comments:commentbox,id:expense_id, _token:'{!! csrf_token() !!}'}).done(function (data) {
+                  $.post("/expenses/updatestatus",{status:newstatus, comments:commentbox,id:expense_id, _token:'{!! csrf_token() !!}'}).done(function(data) {
                       //Request Succcessful
                       location.reload();
                   });
               }
           }else {
-              $.post("/expenses/updatestatus", {status:newstatus, comments:commentbox,id:expense_id, _token:'{!! csrf_token() !!}'}).done(function (data) {
+              //url web
+              $.post("/expenses/updatestatus",{status:newstatus, comments:commentbox, id:expense_id, _token:'{!! csrf_token() !!}'}).done(function(data) {
                   //Request Succcessful
                   location.reload();
-              }); //url wweb
+              });
           }
         }
     </script>
