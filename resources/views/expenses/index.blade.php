@@ -245,8 +245,33 @@
          window.location = url;
     }
 
+</script>
 
+    {{--Functions Close Expense--}}
+<script>
+    function  closeexpenses()
+    {
+       var commentcounter = 0;
 
+       $(".expenses_checkbox").each(function () {
+           var checking  = $(this).is(':checked');  // input
+           if(checking === true)
+           {
+               commentcounter++;
+           }
+
+       });
+
+       if (commentcounter > 0)
+       {
+          var confirmation = confirm('Are you sure ?');
+          if(confirmation === true)
+              $("#closesubmitbutton").trigger('click');
+       }else
+       {
+            $("#acom_warnings").show().fadeOut(2500);
+       }
+    }
 </script>
 
 @endsection
