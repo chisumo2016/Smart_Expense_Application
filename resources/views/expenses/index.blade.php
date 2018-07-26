@@ -272,6 +272,33 @@
             $("#acom_warnings").show().fadeOut(2500);
        }
     }
+
+    {{--Functions Approve Expense--}}
+
+    function  approvalexpenses()
+    {
+        var commentcounter = 0;
+
+        $(".expenses_checkbox").each(function () {  // each field of ckk box
+            var checking  = $(this).is(':checked');  // input
+            if(checking === true)
+            {
+                commentcounter++;
+            }
+
+        });
+
+        if (commentcounter > 0)
+        {
+            var confirmation = confirm('Are you sure ?');
+            if(confirmation === true)
+
+                $("#approvesubmitbutton").trigger('click');  //Will submit a request to  form
+        }else
+        {
+            $("#acom_warnings").show().fadeOut(2500);
+        }
+    }
 </script>
 
 @endsection
