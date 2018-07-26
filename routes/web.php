@@ -128,6 +128,8 @@ Route::group(['prefix' => '/expenses'], function (){
 
     Route::post('/updatestatus',    'ExpensesController@updatestatus')->name('expense.updatestatus');
 
+    Route::get('editstatus', 'ExpensesController@editstatus')->name('expense.editstatus');
+
 });
 
 

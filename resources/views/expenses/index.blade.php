@@ -42,7 +42,7 @@
                 <div>
                     <nav>
                     <!--  {{--<?php if ($status == "all")     {echo 'class="active"';}?> Seeting Background active--}}-->
-                        <ul class="nav navbar-inverse sidebar-expense" >
+                        <ul class="nav navbar-inverse sidebar-expense">
                             <li <?php if ($status == "all")     {echo 'class="active"';}?>><a href="/expenses?department={{ $department }}&status=all&period={{ $period }}&page=1"      <?php if ($status == "all"){echo 'class="bg-blue"';}?>>All Expenses</a></li>
                             <li <?php if ($status == "Pending") {echo 'class="active"';}?>><a href="/expenses?department={{ $department }}&status=Pending&period={{ $period }}&page=1"<?php if ($status   == "Pending"){echo 'class="bg-blue"';}?>>Pending</a></li>
                             <li <?php if ($status == "Denied")  {echo 'class="active"';}?>><a href="/expenses?department={{ $department }}&status=Denied&period={{ $period }}&page=1"<?php if ($status    == "Denied"){echo 'class="bg-blue"';}?>>Denied</a></li>
@@ -83,7 +83,9 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <form action="" method="post" role="form">
+
+                            <form action="/expenses/editstatus" method="post" role="form">
+
                             {{ csrf_field() }}
 
                              @if(count($expenses) > 0)
@@ -102,13 +104,12 @@
 
                             ?>
 
-
-
                             <tr class="border-{{ $color }}">
                             <td class="budget-expense-td">
-                            <input type="checkbox" name="expenses[]" value="">
+                            <input type="checkbox" name="expenses[]" value="{{ $row->id }}" class="expenses_checkbox">      {{--More than one array or input  expenses[] --}}
                             </td>
-                            <td style="width: 600px; text-align: left; ">
+
+                            <td class="td-expense">
                             <h5>
                             <a href="{{ route('expense.show',$row->id) }}">
                                 {{ $row->subject }}             {{--Subject of the expense--}}
@@ -118,7 +119,20 @@
                             </h5>
 
                             <p>From : <span>{{ $row->user }}</span> Created At :<span> {{ date('d-M-Y', strtotime($row->created_at)) }}}</span></p>
-                            <p><strong>Comment Box :</strong></p>
+
+                                @if($row->comments != '')
+                                    <p><strong>Comment :</strong>{{ $row->comments }}</p>
+                                @endif
+
+                                <div style="clear:both; height: 8px;"></div>
+                                
+                                <div id="comments_box_{{$row->id}}"  class="comments_box_">
+                                    <div class="comments_strong"><strong>Comments:</strong></div>
+                                    <textarea class="validatecommentbox  validatecommentbox2" name="comments[{{ $row->id }}]" id="comments_{{ $row->id }}"></textarea>
+                                    
+                                    
+                                    
+                                </div>
 
                             </td>
                             <td>
@@ -178,14 +192,32 @@
                         </tbody>
                     </table>
 
+                    @if(count($expenses) > 0)
+                    @if(Auth::user()->role != 3)
+
                     <div class="col-sm-8 status_trigger status_trigger-col-sm-8">
-                        <button class="btn btn-default pull-right btn-color" type="button"  onclick="closeexpenses()">Close</button>
-                        <button class="btn btn-danger pull-right " type="button"  onclick="denyexpenses()">Deny</button>
-                        <button class="btn btn-success pull-right " type="button"  onclick="approvalexpenses()">Approve</button>
+                        <div id="com_warnings" style="color: red; margin-bottom: 10px; display: none;">Please fill comment box these are required</div>
+                        <div id="acom_warnings" style="color: red; margin-bottom: 10px; display: none;">Please select the request first</div>
+
+                        <button class="btn btn-danger "   name="status"  id="deniedsubmitbutton"      type="submit"  value="Denied"   style="visibility: hidden">Deny</button>
+                        <button class="btn btn-danger "   name="status"  id="approvesubmitbutton"     type="submit"  value="Approved" style="visibility: hidden">Approve</button>
+                        <button class="btn btn-success "  name="status"  id="closesubmitbutton"       type="submit"  value="Closed"   style="visibility: hidden">Close</button>
+
+
+                        <button class="btn btn-default pull-right btn-color"    type="button"  onclick="closeexpenses()">Close</button>
+                        <button class="btn btn-danger pull-right"               type="button"  onclick="denyexpenses()">Deny</button>
+                        <button class="btn btn-success pull-right"              type="button"  onclick="approvalexpenses()">Approve</button>
 
                     </div>
 
-                    </form><!-- end Form -->
+                  @endif
+
+
+                  @else
+                   <h4>No Items Found</h4>
+                  @endif
+
+                    </form> <!-- end Form -->
                 </div>
             </div>
 

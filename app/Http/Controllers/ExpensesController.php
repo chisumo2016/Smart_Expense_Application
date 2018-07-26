@@ -145,6 +145,11 @@ class ExpensesController extends Controller
 
     }
 
+    public function editstatus(Request $request)
+    {
+
+    }
+
     public function  update()
     {
 

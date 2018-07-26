@@ -439,10 +439,15 @@ button{
 }
 
 
-budget-expense-td{
+.budget-expense-td{
     width:30px;
     border-right: none;
     vertical-align: middle;
+}
+
+.td-expense{
+    width: 600px;
+    text-align: left;
 }
 
 .details-expenses{
@@ -483,7 +488,20 @@ budget-expense-td{
 }
 
 
+.comments_box_{
+    display: none;
 
+}
+
+.validatecommentbox2{
+    width: 320px;
+    height: 42px;
+    margin-left: 10px;
+}
+.comments_strong{
+    float: left;
+    margin-top: 8px;
+}
 
 
 
