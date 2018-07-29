@@ -144,10 +144,22 @@ class ExpensesController extends Controller
 
 
     }
-
+    //Update the Status of Approval and Close Expense
     public function editstatus(Request $request)
     {
-          dd($request);
+          //dd($request);
+
+        $status = $request ->status;
+        foreach ($request->expenses as $row)
+        {
+            // Find the expense id   and  Aprroval id
+
+            $expense =  Expense::find($row);
+            $expense->status = $status;
+            $expense->approver_id = Auth::user()->id;
+            $expense->save();
+        }
+        return redirect()->back()->with('message', 'Changes Saved');
     }
 
     public function  update()
