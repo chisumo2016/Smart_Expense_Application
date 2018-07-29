@@ -318,6 +318,41 @@
                 $("#com_warnings").hide();
             }
         });
+
+        //B
+        var commentcounter = 0;
+
+        $(".expenses_checkbox").each(function () {  // each field of ckk box
+            var checking  = $(this).is(':checked');  // input
+            if(checking === true)
+            {
+                commentcounter++;
+                //alert(commentcounter);
+            }
+        });
+
+
+        //Validate comments box
+        var allfilledtextarea  = $(".validatecommentbox").filter(function () {
+            return this.value;
+
+        });
+
+        //alert(allfilledtextarea.length);
+
+        if(allfilledtextarea.length == 0)
+        {
+            $("#com_warnings").show().fadeOut(2500);
+        }else if(allfilledtextarea.length == commentcounter)
+        {
+            var confirmation = confirm('Are you sure ?');
+            $("#com_warnings").hide();
+
+            if (confirmation == true)
+            {
+                $("#deniedsubmitbutton").trigger('click');
+            }
+        }
     }
 </script>
 

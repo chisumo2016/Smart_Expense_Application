@@ -495,8 +495,9 @@ button{
 
 .validatecommentbox2{
     width: 320px;
-    height: 42px;
+    height: 100px;
     margin-left: 10px;
+    overflow: hidden;
 }
 .comments_strong{
     float: left;
