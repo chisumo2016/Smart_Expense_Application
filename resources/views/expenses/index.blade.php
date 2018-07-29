@@ -298,6 +298,26 @@
         {
             $("#acom_warnings").show().fadeOut(2500);
         }
+
+    }
+
+   /*Function to Deny Expenses  */
+    function denyexpenses()
+    {
+        $(".expenses_checkbox").each(function () {
+            var checking   = $(this).is(':checked');
+            var checkboxid = $(this).val();
+
+            if(checking == true)
+            {
+                window.scrollTo(0, 200);
+                 $("#comments_box_"+checkboxid).slideDown('slow');
+            }else
+            {
+                $("#comments_box_"+checkboxid).slideUp('slow');
+                $("#com_warnings").hide();
+            }
+        });
     }
 </script>
 
