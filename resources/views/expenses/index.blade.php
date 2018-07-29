@@ -345,7 +345,7 @@
             $("#com_warnings").show().fadeOut(2500);
         }else if(allfilledtextarea.length == commentcounter)
         {
-            var confirmation = confirm('Are you sure ?');
+            var confirmation = confirm('Are you sure  ?');
             $("#com_warnings").hide();
 
             if (confirmation == true)

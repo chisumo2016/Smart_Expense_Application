@@ -152,10 +152,11 @@ class ExpensesController extends Controller
         $status = $request ->status;
         foreach ($request->expenses as $row)
         {
-            // Find the expense id   and  Aprroval id
+            // Find the expense id   and  approver_id
 
             $expense =  Expense::find($row);
-            $expense->status = $status;
+            $expense->status      = $status;
+            $expense->comments    =$_POST['comments'][$row];  //comments and expense_id
             $expense->approver_id = Auth::user()->id;
             $expense->save();
         }
