@@ -108,9 +108,9 @@
                     <div class="total-thing col-sm-12">
                         <div class="title col-sm-5">Budget Information</div>
                             <div class="details col-sm-5 pull-right">
-                                <p>Total Budgets &nbsp;&nbsp;<span>Total Budgets</span></p>
-                                <p>Spend From  Budgets &nbsp;&nbsp;<span>Total Budgets</span></p>
-                                <p>Remaining  Budget &nbsp;&nbsp;<span>Remaining Budgets</span></p>
+                                <p>Total Budgets &nbsp;&nbsp;<span>£ &nbsp;{{ $budgetExpenseTotal->budgetTotal }}</span></p>
+                                <p>Spend From  Budgets &nbsp;&nbsp;<span>£ &nbsp;{{ $budgetExpenseTotal->expenseTotal }}</span></p>
+                                <p>Remaining  Budget &nbsp;&nbsp;<span>£ &nbsp;{{ $budgetExpenseTotal->remainingBalance }}</span></p>
                             </div>
 
                     </div>

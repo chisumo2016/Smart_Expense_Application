@@ -119,12 +119,12 @@ class Budget extends Model
 
         if(Input::get('department') && Input::get('department')!=="all")
         {
-            $department = "AND b.category_id = ".Input::get('department'). "";
+            $department = "AND category_id = ".Input::get('department'). "";
         }
 
         if(Input::get('period') && Input::get('period')!=="all")
         {
-            $period = "AND b.period_id = ". Input::get('period'). "";
+            $period = "AND period_id = ". Input::get('period'). "";
         }
 
         return DB::select(DB::raw("
@@ -154,7 +154,6 @@ class Budget extends Model
         
         
         )as e
-        
         
         
         "));
