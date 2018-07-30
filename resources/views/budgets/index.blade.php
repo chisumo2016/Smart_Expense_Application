@@ -54,7 +54,7 @@
                           <a href="/budgets?department={{ $category->id }}&period={{ $period }}" style="display: block">
                               <div class="departs-group-budget {{ $class }}" data-type="{{ $active }}">
                                   <p>{{ $category->name }}</p>
-                                  <p style="{{ $display }}">Exp total / Bdgt total</p>
+                                  <p style="{{ $display }}">Exp total / {{ $category->budgetTotal  }}</p>
                                   <p style="{{ $display }}">spent</p>
                               </div>
                           </a>
