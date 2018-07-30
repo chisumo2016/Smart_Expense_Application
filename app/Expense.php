@@ -176,6 +176,21 @@ class Expense extends Model
 
 
     }
+
+    public function  categoryexpense()
+    {
+        $company_id =  Auth::user()->company_id;
+        $user_id   = Auth::user()->id;
+
+        return DB::select(DB::raw("
+          SELECT  b.id , e.company_id, SUM(e.price) as expenseTotal, b.category_id as category_id
+          FROM  budgets as b
+          LEFT JOIN  expenses as e ON e.budget_id  = b.id
+          WHERE  e.company_id = $company_id
+          AND     b.user_id  =  $user_id
+          GROUP BY   e.budget_id
+        "));
+    }
 }
 
 

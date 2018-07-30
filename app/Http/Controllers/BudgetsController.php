@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Budget;
 use App\Category;
+use App\Expense;
 use App\Http\Requests\CreateBudgetRequest;
 use App\Period;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class BudgetsController extends Controller
         $this->periods = new Period();
         $this->colors = \App\Providers\Common::colors();
         $this->budgets = new Budget();
+        $this->catexpenses = new Expense();
     }
 
     //
@@ -52,6 +54,9 @@ class BudgetsController extends Controller
         $data['categories']     = $this->categories ->whereUser();
         $data['budgets']        = $this->budgets    ->whereUser();
         $data['colors']         = $this->colors;
+
+        $data['catexpenses']  = $this->catexpenses->categoryexpense();
+        dd($data['catexpenses']);
 
         //dd($data['budgets']);
 
