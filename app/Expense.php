@@ -192,11 +192,27 @@ class Expense extends Model
           
           WHERE  e.company_id = $company_id
           
-          AND     b.user_id  =  $user_id   /*cOMMENT IF U WANT A MANAGER TO CREATE  */
+          AND     b.user_id  =  $user_id   /* COMMENT IF U WANT A MANAGER TO CREATE  */
           
           GROUP BY   e.budget_id
         "));
     }
+
+
+     /* Dashboard */
+
+  public function  dashboard_data($user_id , $company_id , $status)
+  {
+      $table  = DB::table('expenses');
+      $table->select('*');
+      $table->where('user_id',       $user_id);
+      $table->where('company_id',    $company_id);
+      $table->where('status',        $status);
+
+      //count
+      $result = $table->count();
+      return $result;
+  }
 }
 
 
