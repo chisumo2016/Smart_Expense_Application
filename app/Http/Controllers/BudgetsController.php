@@ -56,7 +56,7 @@ class BudgetsController extends Controller
         $data['colors']         = $this->colors;
 
         $data['catexpenses']  = $this->catexpenses->categoryexpense();
-        dd($data['catexpenses']);
+       //dd($data['catexpenses']);
 
         //dd($data['budgets']);
 

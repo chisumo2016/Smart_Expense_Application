@@ -183,11 +183,17 @@ class Expense extends Model
         $user_id   = Auth::user()->id;
 
         return DB::select(DB::raw("
+
           SELECT  b.id , e.company_id, SUM(e.price) as expenseTotal, b.category_id as category_id
+          
           FROM  budgets as b
+          
           LEFT JOIN  expenses as e ON e.budget_id  = b.id
+          
           WHERE  e.company_id = $company_id
-          AND     b.user_id  =  $user_id
+          
+          AND     b.user_id  =  $user_id   /*cOMMENT IF U WANT A MANAGER TO CREATE  */
+          
           GROUP BY   e.budget_id
         "));
     }

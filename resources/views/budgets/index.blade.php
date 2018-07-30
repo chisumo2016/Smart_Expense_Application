@@ -42,6 +42,7 @@
                   @if(count($categories) > 0)
                     <?php $i = 0;?> {{--color--}}
                    @foreach($categories as $category)
+
                             {{--color--}}
                        <?php
 
@@ -54,7 +55,14 @@
                           <a href="/budgets?department={{ $category->id }}&period={{ $period }}" style="display: block">
                               <div class="departs-group-budget {{ $class }}" data-type="{{ $active }}">
                                   <p>{{ $category->name }}</p>
-                                  <p style="{{ $display }}">Exp total / {{ $category->budgetTotal  }}</p>
+
+                                  @foreach($catexpenses as $exp)
+
+                                      @if($exp->category_id == $category->id) {{ $exp->expenseTotal }}  /  {{ $category->budgetTotal }}
+                                      @endif
+
+                                  @endforeach
+                                  <p>  </p>
                                   <p style="{{ $display }}">spent</p>
                               </div>
                           </a>

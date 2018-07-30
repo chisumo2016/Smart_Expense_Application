@@ -163,7 +163,7 @@ class ExpensesController extends Controller
             $expense->approver_id = Auth::user()->id;
             $expense->save();
         }
-        return redirect()->back()->with('message', 'Changes Saved');
+        return redirect()->route('expense.index')->with('message', 'Changes Saved');
     }
 
     //Search
