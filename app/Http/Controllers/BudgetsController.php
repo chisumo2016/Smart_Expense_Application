@@ -46,16 +46,23 @@ class BudgetsController extends Controller
            return redirect('/budgets?department=all&period=all');
         }
 
-        $data['department']         = Input::get('department');
-        $data['period']              = Input::get('period');
+        $data['department']               = Input::get('department');
+        $data['period']                   = Input::get('period');
 
 
-        $data['periods']        = $this->periods    ->whereUser();
-        $data['categories']     = $this->categories ->whereUser();
-        $data['budgets']        = $this->budgets    ->whereUser();
-        $data['colors']         = $this->colors;
+        $data['periods']                 = $this->periods    ->whereUser();
+        $data['categories']              = $this->categories ->whereUser();
+        $data['budgets']                 = $this->budgets    ->whereUser();
+        $data['colors']                  = $this->colors;
 
-        $data['catexpenses']  = $this->catexpenses->categoryexpense();
+        $data['catexpenses']            = $this->catexpenses->categoryexpense();
+
+        $data['budgetExpenseTotal']     = $this->budgets->budgetExpenseTotal();  //Sum of Budfets and expense
+        $data['budgetExpenseTotal']     = $data['budgetExpenseTotal'][0];  //Sum of Budfets and expense
+
+//        dd($data['budgetExpenseTotal']);
+
+
        //dd($data['catexpenses']);
 
         //dd($data['budgets']);

@@ -90,6 +90,77 @@ class Budget extends Model
 
 
     }
+
+    // Creating query for sum of all Budgets and Expenses
+
+    public function  budgetExpenseTotal()
+    {
+        $company_id = Auth::user()->company_id;
+        $department =  "";
+        $period     =  "";
+        $AND        =  "";
+
+        //Check user if is a manager or memeber or //Refining query  as per ACL
+
+
+        if(Auth::user()->role != 1)
+        {
+            $AND = "
+              AND category_id IN(
+              
+              SELECT ud.category_id
+              FROM   user_details as ud 
+              WHERE  ud.user_id  = ".Auth::user()->id."
+              
+              )
+            
+            ";
+        }
+
+        if(Input::get('department') && Input::get('department')!=="all")
+        {
+            $department = "AND b.category_id = ".Input::get('department'). "";
+        }
+
+        if(Input::get('period') && Input::get('period')!=="all")
+        {
+            $period = "AND b.period_id = ". Input::get('period'). "";
+        }
+
+        return DB::select(DB::raw("
+
+        SELECT b.budgetTotal, e.expenseTotal, SUM(b.budgetTotal) - SUM(E.expenseTotal) as remainingBalance
+        
+        FROM(
+         SELECT * ,  SUM(budget) as budgetTotal
+         FROM      budgets
+         
+         WHERE     company_id   = $company_id
+         $department
+         $period
+         $AND
+            
+        ) as b,
+        
+        (
+          SELECT * ,  SUM(price) as expenseTotal
+         FROM      expenses
+         
+         WHERE     company_id   = $company_id
+         
+         $department
+         $period
+         $AND
+        
+        
+        )as e
+        
+        
+        
+        "));
+
+
+    }
 }
 
 ///* Group by errot in laravel
