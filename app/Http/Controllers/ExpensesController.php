@@ -44,8 +44,8 @@ class ExpensesController extends Controller
 
         if(Input::get('department' == false) || Input::get('status') == false || Input::get('period')== false)
         {
-            //set ur
-            return redirect('/expenses?department=all&status=all&period=all ');
+            //set url
+            return redirect('/expenses?department=all&status=all&period=all');
         }
 
         //URL
@@ -164,6 +164,16 @@ class ExpensesController extends Controller
             $expense->save();
         }
         return redirect()->back()->with('message', 'Changes Saved');
+    }
+
+    //Search
+
+    public  function  search(Request $request)
+    {
+        $request = $request->all();
+        return redirect('/expenses?department=all&status=all&period=all&search='.$request['search']);
+
+      // dd($request) ;
     }
 
     public function  update()

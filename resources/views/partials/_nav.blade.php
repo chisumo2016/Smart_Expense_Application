@@ -26,7 +26,11 @@
                     <li><a class="heading-style" href="#">Reports &nbsp; <i class="fa fa-eye"></i></a></li>
 
                     <li>
-                        <form class="navbar-form navbar-left" action="" method="#" role="search">
+                        <form class="navbar-form navbar-left" action="{{ route('expense.search') }}" method="post" role="search">
+
+                            {{csrf_field()}}
+                            <input type="hidden" name="company_id" value="{!! Auth::user()->company_id !!}">
+
                             <div class="form-group">
                                 <input type="text" class="form-control" name="search" placeholder="Search">
                             </div>

@@ -118,7 +118,7 @@
                             <span>{{ $row->item }}{{--Budget Item--}} (<span style="color: #142fba;">{{\App\Providers\Common::format_currency($row->budget - $row->price)}} &nbsp; BL</span>)</span>
                             </h5>
 
-                            <p>From : <span>{{ $row->user }}</span> Created At :<span> {{ date('d-M-Y', strtotime($row->created_at)) }}}</span></p>
+                            <p>From : <span>{{ $row->user }}</span> Created At :<span> {{ date('d-M-Y', strtotime($row->created_at)) }}</span></p>
 
                                 @if($row->comments != '')
                                     <p><strong>Comment :</strong>{{ $row->comments }}</p>

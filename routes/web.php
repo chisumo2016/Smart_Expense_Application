@@ -130,6 +130,10 @@ Route::group(['prefix' => '/expenses'], function (){
 
     Route::post('editstatus', 'ExpensesController@editstatus')->name('expense.editstatus');
 
+    Route::post('/search', 'ExpensesController@search')->name('expense.search');
+
+
+
 });
 
 

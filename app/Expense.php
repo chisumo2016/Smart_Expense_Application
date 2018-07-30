@@ -23,6 +23,9 @@ class Expense extends Model
         $status = Input::get('status');
         $period = Input::get('period');
 
+        //Search
+        $search = Input::get('search');
+
 
 
         $table = DB::table('expenses as e');
@@ -72,6 +75,19 @@ class Expense extends Model
         if ($status &&  $status != 'all')
         {
             $table = $table ->where('e.status', $period);
+        }
+
+        //Search
+        if($search)
+        {
+            $table = $table->where('e.id', 'like', $search);
+            $table = $table->orWhere('u.name',      'like', '%'.$search.'%');
+            $table = $table->orWhere('b.item',      'like', '%'.$search.'%');
+            $table = $table->orWhere('e.price',     'like', '%'.$search.'%');
+            $table = $table->orWhere('c.name',       'like', '%'.$search.'%');
+            $table = $table->orWhere('e.status',     'like', '%'.$search.'%');
+            $table = $table->orWhere('e.outside',    'like', '%'.$search.'%');
+            $table = $table->orWhere('e.created_at', 'like', '%'.$search.'%');
         }
 
 
