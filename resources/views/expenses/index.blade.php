@@ -193,6 +193,8 @@
                     </table>
 
                     @if(count($expenses) > 0)
+                        {{--Pagnation--}}
+                    <div class="col-sm-4">{!! $expenses->render() !!}</div>
                     @if(Auth::user()->role != 3)
 
                     <div class="col-sm-8 status_trigger status_trigger-col-sm-8">
@@ -359,7 +361,7 @@
     $(document).ready(function () {
         $('.checkAll').on('click', function () {
             $(this).closest('table').find('tbody :checkbox').prop('checked',this.checked).closest('tr').toggleClass('selected',this.checked);
-            
+
         });
     });
 </script>

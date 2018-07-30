@@ -78,9 +78,12 @@ class Expense extends Model
 
 
         $table= $table->orderBy('created_at', 'DESC');
-        //Fetching
 
-        $table = $table->get();
+        //Fetching    $table = $table->get();
+
+            //Pagnation
+            $table = $table->paginate(2);
+
 
 
         return  $table;

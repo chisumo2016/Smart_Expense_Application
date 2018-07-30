@@ -53,9 +53,12 @@ class ExpensesController extends Controller
         $data['department']     = Input::get('department');
         $data['period']         = Input::get('period');
         $data['page']           = Input::get('page');
-//        $data['expenses']       = $data['expenses']->appends(Input::except('page'));
-
         $data['expenses']       = $this->expenses->getAll(); //dd($data['expenses']);
+
+        //Paginationation
+        $data['expenses']       = $data['expenses']->appends(Input::except('page'));
+
+
         $data['periods']        = $this->periods->whereUser();
         $data['categories']     = $this->categories->whereUser();
 
