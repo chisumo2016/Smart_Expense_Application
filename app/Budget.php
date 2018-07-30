@@ -50,24 +50,27 @@ class Budget extends Model
         return DB::select(DB::raw("
         
            SELECT
-           b.id , b.item, b.unit, b.company_id, b.category_id , b.period_id, b.quantity,b.budget,b.created_at,u.name as name,c.name as category,
-           b.budget as outside
+           b.id, b.item, b.unit, b.company_id, b.category_id , b.period_id, b.quantity,b.budget,b.created_at,u.name as name,c.name as category,
            
            
-           /*CASE 
+          
+           CASE 
+           
             WHEN (b.budget -  SUM(e.price) > 0)
-            THEN b.budget  -   SUM(e.price)
+            THEN b.budget  -  SUM(e.price)
             
             ELSE b.budget
            
-           END AS  outside */
+           END as  outside 
            
           
            FROM budgets as b
            
-            LEFT JOIN users as u ON b.user_id = u.id
+            LEFT JOIN users       as u  ON  b.user_id     = u.id
             
-            LEFT JOIN categories as c ON b.category_id = c.id
+            LEFT JOIN categories  as c  ON  b.category_id  = c.id
+            LEFT JOIN companies   as co ON  b.company_id   = co.id
+            LEFT JOIN expenses    as e  ON  e.budget_id     = b.id
             
            
            WHERE b.company_id = $company_id
@@ -75,12 +78,21 @@ class Budget extends Model
            $department
            $period
            $AND
-           
+          
+          
+           GROUP BY b.id 
            ORDER BY b.id DESC 
            
            
         
         
         "));
+
+
     }
 }
+
+///* Group by errot in laravel
+//        * https://github.com/laravel/framework/issues/14997#issuecomment-24212907
+//        * https//stackoverflow.com/questions/40917189/laravel-syntax-error-or-access-violation-1055-error
+//        * */
