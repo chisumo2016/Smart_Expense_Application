@@ -354,6 +354,14 @@
             }
         }
     }
+
+   //Selecting and Unselecting Input CheckBox
+    $(document).ready(function () {
+        $('.checkAll').on('click', function () {
+            $(this).closest('table').find('tbody :checkbox').prop('checked',this.checked).closest('tr').toggleClass('selected',this.checked);
+            
+        });
+    });
 </script>
 
 @endsection
