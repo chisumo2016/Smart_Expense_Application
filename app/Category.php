@@ -36,14 +36,26 @@ class Category extends Model
 
         return DB::select(DB::raw("
 
-         SELECT cat.id , cat.company_id, cat.name , cat.created_at, cat.updated_at
+         SELECT cat.id , cat.company_id, cat.name , cat.created_at,  cat.updated_at, b.budgets
          
          FROM  categories as cat
+         
+         /* Query to show No Of  Budget */
+         
+         LEFT JOIN 
+         (
+           SELECT    count(b.id) as budgets, b.company_id, b.category_id
+           FROM      budgets as b
+           WHERE     b.company_id  =   $company_id
+           GROUP BY  b.category_id 
+         
+         ) b ON b.category_id     =  cat.id
         
-        WHERE  cat.company_id = $company_id
+        WHERE  cat.company_id     =  $company_id
         
         $AND
         
+        GROUP  By cat.id
         ORDER  by cat.name ASC 
         
         "));

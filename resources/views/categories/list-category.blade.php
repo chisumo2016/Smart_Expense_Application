@@ -12,7 +12,7 @@
             @if(count($categories) > 0)
                 @foreach($categories as $category)
             <tr>
-                <td>{{ $category->name }} &nbsp; (3)</td>
+                <td>{{ $category->name }} &nbsp;  ({{ $category->budgets }})</td>
                 <td>
                     <a href="{{ route('category.edit',$category->id) }}"><i class="fa fa-edit"></i></a>
                    <a href="{{ route('category.delete',$category->id) }}"><i class="fa fa-trash"></i></a>
