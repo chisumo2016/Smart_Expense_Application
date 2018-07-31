@@ -17,8 +17,8 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $dat['profile'] = Auth::user();
-      return view('profile.index');
+        $data['profile'] = Auth::user();
+      return view('profile.index', $data);
     }
 
     public  function create()
