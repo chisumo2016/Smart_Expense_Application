@@ -81,8 +81,39 @@ class ProfileController extends Controller
 
     }
 
-    public function  update()
+    public function  update(Request $request, $id)
     {
+        //Find the current logged in
+        $user = Auth::user();
+
+        $edit = User::find($user->id);
+
+        //Validate the request
+
+        $this->validate($request,[
+           'password'                => 'required|min:6',
+           'password_confirmation'   => 'required|min:6'
+        ]);
+
+        $password   = $request->password;
+        $c_password = $request->password_confirmation;
+
+        //Check the password and c_password are equal
+
+        if ($password != $c_password)
+        {
+            return redirect()->back()->with('error', 'Your Password does not match');
+        }
+
+        //Hashing the password
+        $edit->password = bcrypt($password);
+
+        //Save
+
+        $edit->save();
+
+        return redirect()->back()->with('message', 'Password Update');
+
 
     }
 
