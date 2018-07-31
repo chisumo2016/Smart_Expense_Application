@@ -39,12 +39,12 @@ class ProfileController extends Controller
 
         //Validate
         $this->validate($request,[
-           'name'  => 'required',
-            'phone' =>'required|numeric',
-            'city' =>'required',
-            'country' =>'required',
-            'address' =>'required',
-            'logo' =>'required',
+           'name'           =>       'required',
+            'phone'         =>       'required|numeric',
+            'city'          =>       'required',
+            'country'       =>       'required',
+            'address'       =>       'required',
+            'logo'          =>       'required',
         ]);
 
         //Validate the image

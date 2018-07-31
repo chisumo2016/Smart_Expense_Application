@@ -15,18 +15,18 @@ class CompaniesController extends Controller
     public  function  __construct()
     {
         $this->middleware('auth');
-        $this->companies = new Company;
-        $this->users = new User;
-        $this->colors = \App\Providers\Common::colors();
+        $this->companies    = new Company;
+        $this->users        = new User;
+        $this->colors       = \App\Providers\Common::colors();
     }
 
     //
     public function index()
     {
-      $data['title']  = trans('app.companies-title');
-      $data['colors'] = $this->colors;
-      $data['users']  =  $this->users;
-      $data['companies']  =  $this->companies->whereUser();  //Refining the company Mode;
+      $data['title']        =   trans('app.companies-title');
+      $data['colors']       =   $this->colors;
+      $data['users']        =   $this->users;
+      $data['companies']    =   $this->companies->whereUser();  //Refining the company Mode;
       //$data['companies']  =  $this->companies->where('user_id', Auth::user()->id)->get();  //$data['companies']  =  $this->companies->get();
 
 
@@ -54,6 +54,7 @@ class CompaniesController extends Controller
         }
 
         $company = new Company($request->all());
+
         Auth::user()->companies()->save($company);
         return redirect()->back()->with('message','New Company Created');
 
@@ -93,12 +94,14 @@ class CompaniesController extends Controller
 
     public function active() //$companyid
     {
-        $user_id = Auth::user()->id;
-        $company = Input::get('company');
-        $company_id = base64_decode(urldecode($company));
-        $company_name = $this->companies->find($company_id);
+        $user_id            =   Auth::user()->id;
+        $company            =   Input::get('company');
+        $company_id         =   base64_decode(urldecode($company));
+        $company_name       =   $this->companies->find($company_id);
+
         $users = $this->users->find($user_id);
-        $users->company_id = $company_id;
+
+        $users->company_id   = $company_id;
         $users->company_name = $company_name->name;
         $users->save();
 

@@ -13,6 +13,7 @@ class CategoriesPeriodsController extends Controller
     public  function  __construct()
     {
         $this->middleware('auth');
+
         $this->categories = new Category();
         $this->periods =    new Period();
     }

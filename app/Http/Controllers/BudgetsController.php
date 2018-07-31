@@ -86,9 +86,10 @@ class BudgetsController extends Controller
         {
             return redirect()->back()->with('error', 'Access denied you dont have enough sufficient privileges');
         }
-        $budgets =  new Budget($request->all());
-        $budgets->user_id = Auth::user()->id;
-        $budgets->company_id = input::get('company_id');
+
+        $budgets                =  new Budget($request->all());
+        $budgets->user_id       = Auth::user()->id;
+        $budgets->company_id    = input::get('company_id');
 
         $budgets->save();
 

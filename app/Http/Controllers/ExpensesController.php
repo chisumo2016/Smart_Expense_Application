@@ -79,9 +79,9 @@ class ExpensesController extends Controller
 
         $budget_id = explode(":", $request->budget_id);
         //$request->budget_id   = $budget_id[0];
-        $budgetID            = $budget_id[0];
-        $category_id          = $budget_id[2];
-        $period_id            = $budget_id[3];
+        $budgetID               = $budget_id[0];
+        $category_id            = $budget_id[2];
+        $period_id              = $budget_id[3];
 
         $expense = new Expense($request->all());
 
