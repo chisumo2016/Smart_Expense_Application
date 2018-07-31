@@ -141,8 +141,8 @@ Route::group(['prefix' => '/expenses'], function (){
 Route::group(['prefix' => '/profile'], function () {
 
     Route::get('/',                    'ProfileController@index')->name('profile.index');
-    Route::get('/edit/{id}',            'ProfileController@edit')->name('profile.edit');
-    Route::get('/update/{id}',          'ProfileController@update')->name('profile.update');
+    Route::post('/edit/{id}',            'ProfileController@edit')->name('profile.edit');
+    Route::post('/update/{id}',          'ProfileController@update')->name('profile.update');
 
 });
 
