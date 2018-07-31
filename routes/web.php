@@ -128,15 +128,23 @@ Route::group(['prefix' => '/expenses'], function (){
 
     Route::post('/updatestatus',    'ExpensesController@updatestatus')->name('expense.updatestatus');
 
-    Route::post('editstatus', 'ExpensesController@editstatus')->name('expense.editstatus');
+    Route::post('editstatus',        'ExpensesController@editstatus')->name('expense.editstatus');
 
-    Route::post('/search', 'ExpensesController@search')->name('expense.search');
+    Route::post('/search',            'ExpensesController@search')->name('expense.search');
 
 
 
 });
 
+/**==============================Profile Routes==================================*/
 
+Route::group(['prefix' => '/profile'], function () {
+
+    Route::get('/',                    'ProfileController@index')->name('profile.index');
+    Route::get('/edit/{id}',            'ProfileController@edit')->name('profile.edit');
+    Route::get('/update/{id}',          'ProfileController@update')->name('profile.update');
+
+});
 
 
 

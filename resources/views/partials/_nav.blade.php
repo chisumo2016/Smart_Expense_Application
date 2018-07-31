@@ -52,8 +52,8 @@
 
                         <ul class="dropdown-menu">
 
-                            <li><a href="">Name</a></li>
-                            <li><a href="">Profile</a></li>
+                            <li><a href="{{ route('profile.index') }}">{{ Auth::user()->name }}</a></li>
+                            <li><a href="{{ route('profile.index') }}">Profile</a></li>
                             <li><a href="{{route('logout')}}">Logout</a></li>
                         </ul>
                     </li>
